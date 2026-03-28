@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Footer } from "../components/Footer";
@@ -21,6 +22,7 @@ export function AppShell() {
         <Outlet />
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }
