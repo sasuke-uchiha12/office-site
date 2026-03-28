@@ -1,0 +1,221 @@
+Role
+You are a senior React engineer working in Codex. Rebuild the provided cleaned mirrored website into a maintainable React application while preserving the original visual design as closely as possible.
+
+Inputs
+1. A cleaned mirrored website based on the provided source files.
+2. HTML files are layout/content references only.
+3. Existing CSS files are the primary styling source and should be reused as much as possible.
+4. Mirrored JS files are mostly Next.js / Turbopack runtime chunks and must not be treated as reusable app logic.
+5. The attached PDF defines the target website flow, page priorities, and section order.
+6. The available images/assets are limited to the provided list / existing asset set.
+
+Core Goal
+Build a React version of the site that follows the target page flow from the PDF, keeps styling visually consistent across pages, reuses the provided CSS wherever practical, and only uses the supplied assets/images. Do not invent new product imagery, hero imagery, or visual content outside the given asset set.
+
+Critical Build Rules
+- Preserve the original UI and layout feel before attempting any redesign.
+- Reuse the given CSS as the first choice.
+- If parts of the CSS are broken, incomplete, overly coupled to the mirrored runtime, or not practical to reuse directly, build a very similar replacement so the visual language stays consistent across all pages.
+- Keep spacing, typography rhythm, section structure, and component styling as consistent as possible across pages.
+- Use only the provided image list / existing assets.
+- Pictures must come from the provided list only.
+- Do not generate or invent new product photos, banners, hero images, or decorative imagery.
+- Rebuild interactivity in React manually.
+- Do not depend on self.__next_f.push(...), mirrored hydration payloads, or Turbopack/Next runtime chunks.
+- Prefer reusable React components, shared layout wrappers, and static/mock data first.
+- Repeated global structure should be similar across pages, not necessarily identical.
+
+Target Website Flow and Page Priorities
+1. Homepage
+   - Carousel with 2 slides
+   - Two primary sections/options: House Clearance and Shop
+   - Fast facts section
+   - Good News From Far Away section
+
+2. House Clearance page
+   - Carousel with 2 slides
+   - Filter and discover section with four parts
+   - Additional supporting content area with a strong, well-structured layout
+   - Mini FAQs section
+
+3. Shop page
+   - Carousel with 2 slides
+   - New arrivals section
+   - Start exploring section
+
+4. About page
+   - Mostly copy/adapt the About Us portion from the available reference material into this page structure
+
+5. Contact page
+
+Global UX / Layout Guidance
+- Build a shared site shell with common header/navigation/footer behavior across pages.
+- Shared structure should feel related across the site, even when sections differ page to page.
+- Keep component patterns consistent: carousel treatment, cards, spacing, CTA styling, section headings, content containers, and footer rhythm.
+- Ensure the site feels like one coherent brand/system rather than separate page experiments.
+- Use responsive layouts and preserve a polished e-commerce/editorial feel similar to the mirrored source.
+
+Source Files
+
+HTML entry/pages
+- ciseco-nextjs.vercel.app/index.html
+- ciseco-nextjs.vercel.app/blog.html
+- ciseco-nextjs.vercel.app/search.html
+- ciseco-nextjs.vercel.app/404
+
+Blog detail pages
+- ciseco-nextjs.vercel.app/blog/boost-your-conversion-rate.html
+- ciseco-nextjs.vercel.app/blog/graduation-dresses-style-guide.html
+- ciseco-nextjs.vercel.app/blog/how-to-wear-your-eid-pieces-all-year-long.html
+- ciseco-nextjs.vercel.app/blog/the-must-have-hijabi-friendly-fabrics-for-2024.html
+- ciseco-nextjs.vercel.app/blog/the-must-have-hijabi-friendly-fabrics-for.html
+
+Collection pages
+- ciseco-nextjs.vercel.app/collections/accessories.html
+- ciseco-nextjs.vercel.app/collections/all.html
+- ciseco-nextjs.vercel.app/collections/beauty-products.html
+- ciseco-nextjs.vercel.app/collections/coats.html
+- ciseco-nextjs.vercel.app/collections/digital-gift-cards.html
+- ciseco-nextjs.vercel.app/collections/explore-new-arrivals.html
+- ciseco-nextjs.vercel.app/collections/jackets.html
+- ciseco-nextjs.vercel.app/collections/jeans.html
+- ciseco-nextjs.vercel.app/collections/pets-food.html
+- ciseco-nextjs.vercel.app/collections/sale-collection.html
+- ciseco-nextjs.vercel.app/collections/sale-collection-2.html
+- ciseco-nextjs.vercel.app/collections/shoes.html
+- ciseco-nextjs.vercel.app/collections/sport-kits.html
+- ciseco-nextjs.vercel.app/collections/t-shirts.html
+- ciseco-nextjs.vercel.app/collections/travel-kits.html
+
+Product pages
+- ciseco-nextjs.vercel.app/products/cashmere-sweater.html
+- ciseco-nextjs.vercel.app/products/cotton-shirt.html
+- ciseco-nextjs.vercel.app/products/denim-jacket.html
+- ciseco-nextjs.vercel.app/products/leather-tote-bag.html
+- ciseco-nextjs.vercel.app/products/linen-blazer.html
+- ciseco-nextjs.vercel.app/products/silk-midi-dress.html
+- ciseco-nextjs.vercel.app/products/velvet-skirt.html
+- ciseco-nextjs.vercel.app/products/wool-trench-coat.html
+
+CSS files
+- ciseco-nextjs.vercel.app/_next/static/chunks/bccb11688cede49e.css
+- ciseco-nextjs.vercel.app/_next/static/chunks/d711f3fb5b0b3230.css
+- ciseco-nextjs.vercel.app/_next/static/chunks/f09fa16d631a96a1.css
+
+Mirrored JS files present but not reusable as application logic
+- ciseco-nextjs.vercel.app/_next/static/chunks/0b082245f106d665.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/2ac62a89d30e5c05.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/35261eb35e28c0d9.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/3d19f98a586e1c1e.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/3dba30a361ba8f30.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/69c57a6f96e4177b.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/7aae20d2eb6357a3.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/7ef115aaec8dbc16.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/89ba62a8ba9b79ce.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/9d310a50d3af862f.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/a6dad97d9634a72d.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/c9ddac9325d8e1fa.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/cf335ca61e8d1f36.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/cfbe59151c68ae8c.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/d17293806a9814f2.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/d288c8ea22c53912.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/df4c9b8e3b68936e.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/e37797ce5178b168.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/ec4b1f1e3cd3ae43.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/fe4042b137d598cb.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/fe4a994c0b7c9a35.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/ff1a16fafef87110.js
+- ciseco-nextjs.vercel.app/_next/static/chunks/turbopack-a9c04135b90a8b66.js
+
+Task
+Produce a practical React migration and implementation plan, then implement toward it. Your work should:
+
+1. Propose a React project structure.
+2. Map the target website into React routes/pages.
+3. Identify reusable components from the available HTML/CSS references.
+4. Explain how to migrate and reuse the CSS safely.
+5. Clearly state which mirrored JS/runtime parts must be ignored and rebuilt.
+6. Generate a step-by-step React conversion plan.
+7. Build the pages according to the PDF page flow and section priorities.
+8. Keep asset usage restricted to the provided files only.
+9. Prefer shared components and consistent styling tokens/patterns across all pages.
+10. Preserve the original UI faithfully before any optional refinement.
+
+Required Route/Page Mapping
+At minimum, include:
+- /
+- /house-clearance
+- /shop
+- /about
+- /contact
+
+Suggested Reusable Components
+Use or adapt patterns such as:
+- AppShell
+- Header
+- Navigation
+- MobileMenu
+- Footer
+- PageHero / Carousel
+- SectionHeader
+- CTASection
+- FeatureCards / FastFacts
+- CategoryCards / EntryOptions
+- ProductCard
+- CollectionGrid
+- FAQAccordion / MiniFAQs
+- ContentSection
+- ContactSection
+
+CSS Migration Strategy
+- Audit the provided CSS files first.
+- Reuse global resets, layout classes, spacing rules, typography, card styles, button styles, and utility patterns wherever possible.
+- Isolate CSS that is tightly coupled to the old runtime or broken selectors.
+- Keep class names and DOM structure compatible when practical so the reused CSS continues to work.
+- For broken or missing pieces, write minimal replacement CSS that matches the existing look and feel.
+- Avoid introducing a conflicting new design system unless absolutely necessary.
+- The result should feel visually constant across the pages.
+
+Implementation Expectations
+- Use React with clean component structure.
+- Prefer React Router for navigation.
+- Use static/mock data for sections and cards first.
+- Recreate carousel behavior in React rather than trying to execute mirrored runtime code.
+- Build only with the available content and asset set.
+- Where content is missing, use restrained placeholder copy that does not imply nonexistent products or imagery.
+- Do not fabricate catalog breadth or image inventory beyond what is actually available.
+
+Process
+Follow this process in order:
+1. Inventory the source files and identify the best reference files for each target page.
+2. Inspect CSS coverage and decide what can be reused directly.
+3. Define routes, layout shell, and shared components.
+4. Map each target page section from the PDF to concrete React sections/components.
+5. Implement the homepage and shared shell first.
+6. Implement House Clearance and Shop pages next.
+7. Implement About and Contact pages after the shared patterns are stable.
+8. Recreate interactions in React with lightweight logic.
+9. Verify responsiveness and visual consistency.
+10. Document any CSS gaps or asset limitations and how you handled them.
+
+Output Format
+Return your answer in this structure:
+1. Project structure
+2. Route mapping
+3. Component inventory
+4. CSS reuse plan
+5. JS/runtime ignore-and-rebuild plan
+6. Page-by-page implementation plan
+7. Risks / assumptions
+8. First implementation step
+9. Then proceed with code generation/update steps
+
+Constraints
+- Do not use the mirrored JS chunks as business logic.
+- Do not rely on broken Next.js mirrored runtime behavior.
+- Do not invent images outside the supplied asset set.
+- Pictures are from the provided list only.
+- Reuse the provided CSS first; only replace selectively when necessary.
+- Keep the look consistent across all pages.
+- Shared structure should be similar across pages, not necessarily identical.
+- Prioritize maintainability, faithful UI reproduction, and predictable React architecture.
