@@ -36,10 +36,12 @@ export type FactItem = {
 export type ProductSummary = {
   id: string;
   title: string;
-  description: string;
+  subtitle: string;
   price: string;
   image: string;
   imageAlt: string;
+  isNew?: boolean;
+  liked?: boolean;
 };
 
 export type StoryCard = {
@@ -49,6 +51,29 @@ export type StoryCard = {
   image: string;
   imageAlt: string;
   meta: string;
+};
+
+export type TestimonialItem = {
+  id: string;
+  quote: string;
+  author: string;
+  avatar: string;
+  avatarAlt: string;
+  accent: string;
+};
+
+export type FloatingAvatar = {
+  id: string;
+  image: string;
+  alt: string;
+  accent: string;
+  position: {
+    top?: string;
+    right?: string;
+    bottom?: string;
+    left?: string;
+  };
+  size: "sm" | "md" | "lg";
 };
 
 export type FaqItem = {
@@ -71,6 +96,35 @@ export type CollectionCardItem = {
   copy: string;
   image: string;
   imageAlt: string;
+};
+
+export type HowItWorksStep = {
+  id: string;
+  step: string;
+  title: string;
+  copy: string;
+  image: string;
+  imageAlt: string;
+  badgeClass: string;
+};
+
+export type ExploreTab = {
+  id: string;
+  label: string;
+  icon: "accessories" | "footwear" | "jewelry" | "beauty";
+  active?: boolean;
+};
+
+export type ExploreCollectionItem = {
+  id: string;
+  category: "accessories" | "footwear" | "jewelry" | "beauty";
+  eyebrow: string;
+  title: string;
+  productCount: string;
+  iconImage: string;
+  iconImageAlt: string;
+  backgroundSvg: string;
+  to: string;
 };
 
 export const navigation: NavItem[] = [
@@ -111,7 +165,7 @@ export const homeHeroSlides: HeroSlide[] = [
 export const homeEntryOptions: EntryOption[] = [
   {
     id: "entry-clearance",
-    eyebrow: "Service route",
+    eyebrow: "Service",
     title: "House Clearance",
     copy:
       "Plan a practical clearance with room-by-room guidance, collection windows, and a clear next step for what stays, goes, and gets rehomed.",
@@ -121,7 +175,7 @@ export const homeEntryOptions: EntryOption[] = [
   },
   {
     id: "entry-shop",
-    eyebrow: "Shopping route",
+    eyebrow: "Shopping",
     title: "Shop",
     copy:
       "Browse a compact set of new arrivals, featured collections, and familiar product-card patterns adapted from the mirrored source.",
@@ -134,27 +188,21 @@ export const homeEntryOptions: EntryOption[] = [
 export const fastFacts: FactItem[] = [
   {
     id: "fact-1",
-    value: "48 hrs",
-    label: "Typical response window",
-    description: "Initial replies stay quick so clearances do not stall while households wait on next steps.",
+    value: "10 million",
+    label: "Articles have been public around the world (as of Sept. 30, 2025)",
+    description: "",
   },
   {
     id: "fact-2",
-    value: "4 ways",
-    label: "Sort and discover flow",
-    description: "Assess, filter, collect, and rehome are presented as a simple four-part service rhythm.",
+    value: "100,000",
+    label: "Registered users account and active users (as of Sept. 30, 2025)",
+    description: "",
   },
   {
     id: "fact-3",
-    value: "2 routes",
-    label: "Home and shop pathways",
-    description: "The site keeps the two primary user journeys visible from the first fold onward.",
-  },
-  {
-    id: "fact-4",
-    value: "100%",
-    label: "Provided asset set",
-    description: "All imagery used here comes only from the mirrored files already present in the workspace.",
+    value: "220+",
+    label: "Countries and regions have our presence (as of Sept. 30, 2025)",
+    description: "",
   },
 ];
 
@@ -188,6 +236,84 @@ export const homeStories: StoryCard[] = [
   },
 ];
 
+export const homeTestimonials: TestimonialItem[] = [
+  {
+    id: "testimonial-1",
+    quote: "Great quality products, affordable prices, fast and friendly delivery. I very recommend.",
+    author: "Berta Emili",
+    avatar: "/_next/avatar24e4c.jpg",
+    avatarAlt: "Berta Emili portrait",
+    accent: "#bfe7ff",
+  },
+  {
+    id: "testimonial-2",
+    quote: "The layout feels clean and premium, and it was easy to move between collections without getting lost.",
+    author: "Lina Carter",
+    avatar: "/_next/avatar130a5.jpg",
+    avatarAlt: "Lina Carter portrait",
+    accent: "#ffc2e4",
+  },
+  {
+    id: "testimonial-3",
+    quote: "I liked how the shop and editorial sections felt connected. It reads like one system, not separate pages.",
+    author: "Noah Reeves",
+    avatar: "/_next/avatar4803d.jpg",
+    avatarAlt: "Noah Reeves portrait",
+    accent: "#ffd35a",
+  },
+];
+
+export const homeFloatingAvatars: FloatingAvatar[] = [
+  {
+    id: "float-1",
+    image: "/_next/avatar30ebd.jpg",
+    alt: "Floating portrait",
+    accent: "#ffb6c9",
+    position: { top: "6rem", left: "8rem" },
+    size: "sm",
+  },
+  {
+    id: "float-3",
+    image: "/_next/avatar130a5.jpg",
+    alt: "Floating portrait",
+    accent: "#ffc2e4",
+    position: { top: "6rem", right: "9rem" },
+    size: "sm",
+  },
+  {
+    id: "float-4",
+    image: "/_next/avatar4803d.jpg",
+    alt: "Floating portrait",
+    accent: "#72e5ff",
+    position: { top: "19rem", left: "1rem" },
+    size: "sm",
+  },
+  {
+    id: "float-5",
+    image: "/_next/avatar30ebd.jpg",
+    alt: "Floating portrait",
+    accent: "#ffcb37",
+    position: { top: "22rem", right: "2rem" },
+    size: "sm",
+  },
+  {
+    id: "float-6",
+    image: "/_next/avatar4803d.jpg",
+    alt: "Floating portrait",
+    accent: "#6ff0c2",
+    position: { bottom: "3rem", left: "26%" },
+    size: "sm",
+  },
+  {
+    id: "float-7",
+    image: "/_next/avatar130a5.jpg",
+    alt: "Floating portrait",
+    accent: "#c8b4ff",
+    position: { bottom: "3rem", right: "26%" },
+    size: "sm",
+  },
+];
+
 export const houseClearanceHeroSlides: HeroSlide[] = [
   {
     id: "clearance-1",
@@ -215,38 +341,42 @@ export const houseClearanceHeroSlides: HeroSlide[] = [
   },
 ];
 
-export const houseClearanceFilters: CollectionCardItem[] = [
+export const houseClearanceSteps: HowItWorksStep[] = [
   {
-    id: "filter-1",
-    eyebrow: "1. Assess",
-    title: "Property type and scale",
-    copy: "Start with the kind of home, access conditions, and whether you need a partial or full clearance.",
+    id: "step-1",
+    step: "Step 1",
+    title: "Property review",
+    copy: "Start with the size of the property, access points, and whether the clearance needs to happen all at once or in stages.",
     image: "/_next/HIW1imgbfc2.png",
     imageAlt: "Assessment illustration",
+    badgeClass: "how-it-works__badge how-it-works__badge--red",
   },
   {
-    id: "filter-2",
-    eyebrow: "2. Discover",
-    title: "Rooms, categories, and priority pieces",
-    copy: "Highlight the rooms that matter first and the items that may need valuation, donation, or careful handling.",
+    id: "step-2",
+    step: "Step 2",
+    title: "Sort and identify",
+    copy: "Highlight the rooms that need priority attention and call out items that should be kept, valued, donated, or sold.",
     image: "/_next/HIW2imga33c.png",
     imageAlt: "Discovery illustration",
+    badgeClass: "how-it-works__badge how-it-works__badge--indigo",
   },
   {
-    id: "filter-3",
-    eyebrow: "3. Collect",
-    title: "Collection window and logistics",
-    copy: "Choose a timing approach that works around access, family coordination, and staged collections where needed.",
+    id: "step-3",
+    step: "Step 3",
+    title: "Collection planning",
+    copy: "Choose a collection window that works around key access, family coordination, and any practical handover constraints.",
     image: "/_next/HIW3img0152.png",
     imageAlt: "Collection illustration",
+    badgeClass: "how-it-works__badge how-it-works__badge--yellow",
   },
   {
-    id: "filter-4",
-    eyebrow: "4. Rehome",
-    title: "Donate, sell, shop, or retain",
-    copy: "Channel reusable items into the right next route so the service does more than simply remove them.",
+    id: "step-4",
+    step: "Step 4",
+    title: "Clear and rehome",
+    copy: "Complete the clearance and move suitable pieces into donation, resale, or safe retention instead of treating everything the same.",
     image: "/_next/HIW4imgaa57.png",
     imageAlt: "Rehome illustration",
+    badgeClass: "how-it-works__badge how-it-works__badge--purple",
   },
 ];
 
@@ -301,62 +431,353 @@ export const shopHeroSlides: HeroSlide[] = [
 export const shopProducts: ProductSummary[] = [
   {
     id: "product-1",
-    title: "Cashmere Sweater",
-    description: "Soft knitwear styling taken from the mirrored product family and used here as a featured arrival.",
-    price: "$128",
-    image: "/_next/p4-10151.jpg",
-    imageAlt: "Cashmere sweater product image",
+    title: "Leather Tote Bag",
+    subtitle: "Pink Yarrow",
+    price: "",
+    image: "/_next/p1-176ca.jpg",
+    imageAlt: "Leather tote bag product image",
+    isNew: true,
+    liked: false,
   },
   {
     id: "product-2",
-    title: "Leather Tote Bag",
-    description: "A reliable accessory card for the shop grid, using the existing product imagery only.",
-    price: "$164",
+    title: "Silk Midi Dress",
+    subtitle: "Emerald Green",
+    price: "",
     image: "/_next/p2-1114e.jpg",
-    imageAlt: "Leather tote bag product image",
+    imageAlt: "Silk midi dress product image",
+    liked: true,
   },
   {
     id: "product-3",
-    title: "Linen Blazer",
-    description: "Clean tailoring with the same rounded-card and surface treatment used across the rest of the page.",
-    price: "$186",
-    image: "/_next/p6-14870.jpg",
-    imageAlt: "Linen blazer product image",
+    title: "Denim Jacket",
+    subtitle: "Light Blue",
+    price: "",
+    image: "/_next/p3-1beb5.jpg",
+    imageAlt: "Denim jacket product image",
+    isNew: true,
+    liked: false,
   },
   {
     id: "product-4",
-    title: "Velvet Skirt",
-    description: "A softer editorial product card pulled from the available product image set.",
-    price: "$112",
-    image: "/_next/p8-1a7cb.jpg",
-    imageAlt: "Velvet skirt product image",
+    title: "Cashmere Sweater",
+    subtitle: "Cream",
+    price: "",
+    image: "/_next/p4-10151.jpg",
+    imageAlt: "Cashmere sweater product image",
+    liked: true,
+  },
+  {
+    id: "product-5",
+    title: "Linen Blazer",
+    subtitle: "Soft Beige",
+    price: "",
+    image: "/_next/p5-30fff.jpg",
+    imageAlt: "Linen blazer product image",
+    isNew: true,
+    liked: false,
+  },
+  {
+    id: "product-6",
+    title: "Weekend Shirt",
+    subtitle: "Powder Blue",
+    price: "",
+    image: "/_next/p2-30dd5.jpg",
+    imageAlt: "Weekend shirt product image",
+    liked: false,
+  },
+  {
+    id: "product-7",
+    title: "Tailored Jacket",
+    subtitle: "Stone Grey",
+    price: "",
+    image: "/_next/p3-226b0.jpg",
+    imageAlt: "Tailored jacket product image",
+    isNew: true,
+    liked: false,
+  },
+  {
+    id: "product-8",
+    title: "Soft Knit Polo",
+    subtitle: "Warm Sand",
+    price: "",
+    image: "/_next/p4-28996.jpg",
+    imageAlt: "Soft knit polo product image",
+    liked: true,
   },
 ];
 
-export const shopCollections: CollectionCardItem[] = [
+export const shopExploreTabs: ExploreTab[] = [
+  { id: "accessories", label: "Accessories", icon: "accessories", active: true },
+  { id: "footwear", label: "Footwear", icon: "footwear" },
+  { id: "jewelry", label: "Jewelry", icon: "jewelry" },
+  { id: "beauty", label: "Beauty", icon: "beauty" },
+];
+
+export const shopCollections: ExploreCollectionItem[] = [
   {
     id: "collection-1",
-    eyebrow: "Explore",
-    title: "New arrivals",
-    copy: "Lead with recent additions and familiar collection-card proportions from the source storefront.",
-    image: "/_next/booth218fa.png",
-    imageAlt: "New arrivals collection image",
+    category: "accessories",
+    eyebrow: "Newest arrivals",
+    title: "Bags",
+    productCount: "77 products",
+    iconImage: "/_next/p5-30fff.jpg",
+    iconImageAlt: "Bags category icon",
+    backgroundSvg: "/_next/static/media/explore1.bf5d4097.svg",
+    to: "/shop#new-arrivals",
   },
   {
     id: "collection-2",
-    eyebrow: "Refine",
-    title: "Shop by occasion",
-    copy: "Turn the broad source collections into a tighter set of pathways that still feel visually rich.",
-    image: "/_next/booth31807.png",
-    imageAlt: "Shop by occasion image",
+    category: "accessories",
+    eyebrow: "Best sellers",
+    title: "Belts",
+    productCount: "155 products",
+    iconImage: "/_next/p1-176ca.jpg",
+    iconImageAlt: "Belts category icon",
+    backgroundSvg: "/_next/static/media/explore2.cc3caa5d.svg",
+    to: "/shop#new-arrivals",
   },
   {
     id: "collection-3",
-    eyebrow: "Revisit",
-    title: "House favourites",
-    copy: "Keep the editorial and shopping routes connected by spotlighting pieces with a story attached.",
-    image: "/_next/booth4e8d6.png",
-    imageAlt: "House favourites image",
+    category: "footwear",
+    eyebrow: "Best sellers",
+    title: "Shoes",
+    productCount: "35 products",
+    iconImage: "/_next/p3-1beb5.jpg",
+    iconImageAlt: "Shoes category icon",
+    backgroundSvg: "/_next/static/media/explore3.4ed3d7e1.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-4",
+    category: "footwear",
+    eyebrow: "Top transparent",
+    title: "Boots",
+    productCount: "55 products",
+    iconImage: "/_next/p2-1114e.jpg",
+    iconImageAlt: "Boots category icon",
+    backgroundSvg: "/_next/static/media/explore4.4e804f1b.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-5",
+    category: "jewelry",
+    eyebrow: "Best seasonal",
+    title: "Rings",
+    productCount: "87 products",
+    iconImage: "/_next/p4-10151.jpg",
+    iconImageAlt: "Rings category icon",
+    backgroundSvg: "/_next/static/media/explore5.4c9535e0.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-6",
+    category: "jewelry",
+    eyebrow: "Top rated",
+    title: "Necklaces",
+    productCount: "114 products",
+    iconImage: "/_next/p4-28996.jpg",
+    iconImageAlt: "Necklaces category icon",
+    backgroundSvg: "/_next/static/media/explore6.77f242e1.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-9",
+    category: "accessories",
+    eyebrow: "Daily edit",
+    title: "Wallets",
+    productCount: "48 products",
+    iconImage: "/_next/p2-30dd5.jpg",
+    iconImageAlt: "Wallets category icon",
+    backgroundSvg: "/_next/static/media/explore1.bf5d4097.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-10",
+    category: "accessories",
+    eyebrow: "Travel ready",
+    title: "Carry-ons",
+    productCount: "29 products",
+    iconImage: "/_next/p3-226b0.jpg",
+    iconImageAlt: "Carry-ons category icon",
+    backgroundSvg: "/_next/static/media/explore2.cc3caa5d.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-23",
+    category: "accessories",
+    eyebrow: "Desk to dinner",
+    title: "Scarves",
+    productCount: "36 products",
+    iconImage: "/_next/p4-10151.jpg",
+    iconImageAlt: "Scarves category icon",
+    backgroundSvg: "/_next/static/media/explore3.4ed3d7e1.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-24",
+    category: "accessories",
+    eyebrow: "Top picks",
+    title: "Hats",
+    productCount: "22 products",
+    iconImage: "/_next/p2-1114e.jpg",
+    iconImageAlt: "Hats category icon",
+    backgroundSvg: "/_next/static/media/explore4.4e804f1b.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-11",
+    category: "footwear",
+    eyebrow: "Weekend edit",
+    title: "Loafers",
+    productCount: "52 products",
+    iconImage: "/_next/p5-30fff.jpg",
+    iconImageAlt: "Loafers category icon",
+    backgroundSvg: "/_next/static/media/explore5.4c9535e0.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-12",
+    category: "footwear",
+    eyebrow: "Best sellers",
+    title: "Sneakers",
+    productCount: "81 products",
+    iconImage: "/_next/p1-176ca.jpg",
+    iconImageAlt: "Sneakers category icon",
+    backgroundSvg: "/_next/static/media/explore6.77f242e1.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-17",
+    category: "footwear",
+    eyebrow: "Top rated",
+    title: "Sandals",
+    productCount: "46 products",
+    iconImage: "/_next/p2-30dd5.jpg",
+    iconImageAlt: "Sandals category icon",
+    backgroundSvg: "/_next/static/media/explore1.bf5d4097.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-18",
+    category: "footwear",
+    eyebrow: "City edit",
+    title: "Heels",
+    productCount: "38 products",
+    iconImage: "/_next/p4-28996.jpg",
+    iconImageAlt: "Heels category icon",
+    backgroundSvg: "/_next/static/media/explore2.cc3caa5d.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-13",
+    category: "jewelry",
+    eyebrow: "Newest arrivals",
+    title: "Bracelets",
+    productCount: "33 products",
+    iconImage: "/_next/p2-1114e.jpg",
+    iconImageAlt: "Bracelets category icon",
+    backgroundSvg: "/_next/static/media/explore1.bf5d4097.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-14",
+    category: "jewelry",
+    eyebrow: "Statement pieces",
+    title: "Earrings",
+    productCount: "58 products",
+    iconImage: "/_next/p3-1beb5.jpg",
+    iconImageAlt: "Earrings category icon",
+    backgroundSvg: "/_next/static/media/explore2.cc3caa5d.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-19",
+    category: "jewelry",
+    eyebrow: "Gift ready",
+    title: "Pendants",
+    productCount: "41 products",
+    iconImage: "/_next/p5-30fff.jpg",
+    iconImageAlt: "Pendants category icon",
+    backgroundSvg: "/_next/static/media/explore3.4ed3d7e1.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-20",
+    category: "jewelry",
+    eyebrow: "Everyday shine",
+    title: "Chains",
+    productCount: "66 products",
+    iconImage: "/_next/p1-176ca.jpg",
+    iconImageAlt: "Chains category icon",
+    backgroundSvg: "/_next/static/media/explore4.4e804f1b.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-7",
+    category: "beauty",
+    eyebrow: "Top rated",
+    title: "Skincare",
+    productCount: "64 products",
+    iconImage: "/_next/p2-30dd5.jpg",
+    iconImageAlt: "Skincare category icon",
+    backgroundSvg: "/_next/static/media/explore2.cc3caa5d.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-8",
+    category: "beauty",
+    eyebrow: "Best sellers",
+    title: "Fragrance",
+    productCount: "42 products",
+    iconImage: "/_next/p4-10151.jpg",
+    iconImageAlt: "Fragrance category icon",
+    backgroundSvg: "/_next/static/media/explore3.4ed3d7e1.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-15",
+    category: "beauty",
+    eyebrow: "Routine staples",
+    title: "Body care",
+    productCount: "39 products",
+    iconImage: "/_next/p4-28996.jpg",
+    iconImageAlt: "Body care category icon",
+    backgroundSvg: "/_next/static/media/explore4.4e804f1b.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-16",
+    category: "beauty",
+    eyebrow: "Seasonal picks",
+    title: "Makeup",
+    productCount: "73 products",
+    iconImage: "/_next/p5-30fff.jpg",
+    iconImageAlt: "Makeup category icon",
+    backgroundSvg: "/_next/static/media/explore5.4c9535e0.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-21",
+    category: "beauty",
+    eyebrow: "Night routine",
+    title: "Serums",
+    productCount: "51 products",
+    iconImage: "/_next/p3-226b0.jpg",
+    iconImageAlt: "Serums category icon",
+    backgroundSvg: "/_next/static/media/explore6.77f242e1.svg",
+    to: "/shop#new-arrivals",
+  },
+  {
+    id: "collection-22",
+    category: "beauty",
+    eyebrow: "Top shelf",
+    title: "Candles",
+    productCount: "27 products",
+    iconImage: "/_next/p2-1114e.jpg",
+    iconImageAlt: "Candles category icon",
+    backgroundSvg: "/_next/static/media/explore1.bf5d4097.svg",
+    to: "/shop#new-arrivals",
   },
 ];
 

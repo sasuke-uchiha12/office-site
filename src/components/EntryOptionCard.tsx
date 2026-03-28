@@ -13,13 +13,14 @@ export function EntryOptionCard({ option }: EntryOptionCardProps) {
         <h3 className="entry-card__title">{option.title}</h3>
         <p className="entry-card__copy">{option.copy}</p>
         <div className="hero-card__actions">
-          <span className="action-button action-button--ghost">Explore route</span>
+          <Link to={option.to} className="action-button action-button--ghost">
+            Explore
+          </Link>
         </div>
         <div className="entry-card__media">
           <img src={option.image} alt={option.imageAlt} />
         </div>
       </div>
-      <Link to={option.to} className="entry-card__link" aria-label={option.title} />
     </article>
   );
 }

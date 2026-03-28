@@ -1,49 +1,42 @@
-import { ContentSection } from "../components/ContentSection";
-import { SectionHeader } from "../components/SectionHeader";
-import { aboutValues } from "../data/siteContent";
-
 export function AboutPage() {
-  return (
-    <>
-      <section className="page-section">
-        <div className="container">
-          <SectionHeader
-            eyebrow="About"
-            title="A calmer retail-and-service system rebuilt from a mirrored reference."
-            body="The available source material was largely fashion-commerce oriented, so this page adapts that editorial tone into a story about reuse, clarity, and a more focused page flow."
-          />
-          <ContentSection
-            eyebrow="Approach"
-            title="Keep what already works, then make the route clearer."
-            copy="That principle shapes the whole migration. The original CSS stays in place. Familiar product, collection, and promotional rhythms stay visible. What changes is the information architecture: the homepage foregrounds House Clearance and Shop, while About and Contact become more direct and easier to scan."
-            image="/_next/photo-1535745122259-f1e187953c4c5e26.jpg"
-            imageAlt="About page supporting image"
-            primaryCta={{ label: "Visit the shop", to: "/shop" }}
-            secondaryCta={{ label: "Contact us", to: "/contact" }}
-          />
-        </div>
-      </section>
+  const aboutGalleryImages = [
+    "/_next/p1-176ca.jpg",
+    "/_next/p2-1114e.jpg",
+    "/_next/p3-226b0.jpg",
+    "/_next/p4-10151.jpg",
+    "/_next/p5-12278.jpg",
+  ];
 
-      <section className="page-section">
-        <div className="container">
-          <SectionHeader
-            eyebrow="Values"
-            title="Three defaults guide the rebuild."
-            body="The source files did not include a dedicated About page, so these principles are derived from the migration brief and the strongest patterns already present in the mirrored references."
-          />
-          <div className="about-values">
-            {aboutValues.map((value) => (
-              <article key={value.id} className="value-card">
-                <div className="value-card__content">
-                  <span className="section-header__eyebrow">{value.label}</span>
-                  <p className="fact-card__value">{value.value}</p>
-                  <p className="fact-card__description">{value.description}</p>
+  return (
+    <section className="page-section about-page">
+      <div className="container">
+        <div className="about-hero">
+          <div className="about-hero__glow" aria-hidden="true">
+            <span className="about-hero__glow-ball about-hero__glow-ball--rose" />
+            <span className="about-hero__glow-ball about-hero__glow-ball--teal" />
+          </div>
+          <div className="about-hero__copy">
+            <h1 className="about-hero__title">👋 About Us.</h1>
+            <p className="about-hero__body">
+              We&apos;re impartial and independent, and every day we create distinctive, world-class
+              programmes and content which inform, educate and entertain millions of people in the
+              around the world.
+            </p>
+          </div>
+          <div className="about-hero__media">
+            <div className="about-hero__gallery" aria-hidden="true">
+              {aboutGalleryImages.map((imageSrc, index) => (
+                <div
+                  key={imageSrc}
+                  className={`about-hero__gallery-card about-hero__gallery-card--${index + 1}`}
+                >
+                  <img className="about-hero__gallery-image" src={imageSrc} alt="" />
                 </div>
-              </article>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

@@ -21,41 +21,28 @@ export function PageHeroCarousel({ slides }: PageHeroCarouselProps) {
   const toneClass =
     activeSlide.tone === "rose" ? "hero-card--rose" : activeSlide.tone === "sky" ? "hero-card--sky" : "";
 
+  const showPrevious = () => {
+    setActiveIndex((current) => (current - 1 + slides.length) % slides.length);
+  };
+
+  const showNext = () => {
+    setActiveIndex((current) => (current + 1) % slides.length);
+  };
+
   return (
     <section className="page-section page-section--tight">
       <div className="container">
-        <div className="carousel-bar">
-          <div className="carousel-status">
-            <span>Slide {activeIndex + 1}</span>
-            <span>/</span>
-            <span>{slides.length}</span>
-          </div>
-
-          <div className="carousel-controls" aria-label="Carousel controls">
-            <button
-              type="button"
-              className="carousel-control"
-              onClick={() => setActiveIndex((current) => (current - 1 + slides.length) % slides.length)}
-              aria-label="Previous slide"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M15 18L9 12L15 6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              className="carousel-control"
-              onClick={() => setActiveIndex((current) => (current + 1) % slides.length)}
-              aria-label="Next slide"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M9 18L15 12L9 6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
         <div className={`hero-card ${toneClass}`}>
+          <button type="button" className="carousel-control carousel-control--edge carousel-control--left" onClick={showPrevious} aria-label="Previous slide">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M15 18L9 12L15 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button type="button" className="carousel-control carousel-control--edge carousel-control--right" onClick={showNext} aria-label="Next slide">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M9 18L15 12L9 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
           <div className="hero-card__accent" />
           <div className="hero-card__inner">
             <div className="hero-card__content">

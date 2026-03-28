@@ -1,9 +1,9 @@
-import { CollectionGrid } from "../components/CollectionGrid";
 import { ContentSection } from "../components/ContentSection";
+import { HowItWorks } from "../components/HowItWorks";
 import { MiniFaqAccordion } from "../components/MiniFaqAccordion";
 import { PageHeroCarousel } from "../components/PageHeroCarousel";
 import { SectionHeader } from "../components/SectionHeader";
-import { houseClearanceFaqs, houseClearanceFilters, houseClearanceHeroSlides } from "../data/siteContent";
+import { houseClearanceFaqs, houseClearanceHeroSlides, houseClearanceSteps } from "../data/siteContent";
 
 export function HouseClearancePage() {
   return (
@@ -14,10 +14,11 @@ export function HouseClearancePage() {
         <div className="container">
           <SectionHeader
             eyebrow="Filter and discover"
-            title="Four parts, one consistent route."
-            body="This section makes the service flow concrete without pretending there is live filtering behind it. The emphasis is on structure, reassurance, and a strong visual rhythm."
+            title="Four parts."
+            mutedSuffix="One consistent route."
+            body="A clearer house-clearance process starts with one visible sequence: review the property, sort what matters, plan collection, and move suitable pieces into the right next home."
           />
-          <CollectionGrid items={houseClearanceFilters} className="filter-grid" />
+          <HowItWorks steps={houseClearanceSteps} />
         </div>
       </section>
 
