@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import type { ExploreCollectionItem, ExploreTab } from "../data/siteContent";
-import { slugify } from "../utils/slugify";
+import type { ExploreTab } from "../data/siteContent";
+import type { CollectionCardView } from "../lib/catalog/types";
 
 type ExploreCollectionsProps = {
   title: string;
   tabs: ExploreTab[];
-  items: ExploreCollectionItem[];
+  items: CollectionCardView[];
 };
 
 function ExploreTabIcon({ icon }: { icon: ExploreTab["icon"] }) {
@@ -89,7 +89,7 @@ export function ExploreCollections({ title, tabs, items }: ExploreCollectionsPro
                   <h3 className="shop-explore-card__title">{item.title}</h3>
                 </div>
                 <p className="shop-explore-card__count">{item.productCount}</p>
-                <Link className="shop-explore-card__link" to={`/shop/collections/${slugify(item.title)}`} aria-label={`Explore ${item.title}`} />
+                <Link className="shop-explore-card__link" to={`/shop/collections/${item.slug}`} aria-label={`Explore ${item.title}`} />
               </div>
             </article>
           ))}

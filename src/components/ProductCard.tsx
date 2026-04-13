@@ -1,8 +1,8 @@
 import { useState } from "react";
-import type { ProductSummary } from "../data/siteContent";
+import type { ProductCardView } from "../lib/catalog/types";
 
 type ProductCardProps = {
-  product: ProductSummary;
+  product: ProductCardView;
 };
 
 export function ProductCard({ product }: ProductCardProps) {

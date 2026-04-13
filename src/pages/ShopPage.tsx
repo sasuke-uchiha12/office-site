@@ -1,11 +1,69 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ExploreCollections } from "../components/ExploreCollections";
 import { PageHeroCarousel } from "../components/PageHeroCarousel";
 import { ProductCard } from "../components/ProductCard";
-import { shopCollections, shopExploreTabs, shopHeroSlides, shopProducts } from "../data/siteContent";
+import { shopExploreTabs, shopHeroSlides } from "../data/siteContent";
+import { fetchPublicCollections, fetchPublicShopProducts } from "../lib/catalog/public";
+import type { CollectionCardView, ProductCardView } from "../lib/catalog/types";
 
 export function ShopPage() {
   const arrivalsViewportRef = useRef<HTMLDivElement | null>(null);
+  const [products, setProducts] = useState<ProductCardView[]>([]);
+  const [collections, setCollections] = useState<CollectionCardView[]>([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const [loadingCollections, setLoadingCollections] = useState(true);
+  const [productsError, setProductsError] = useState<string | null>(null);
+  const [collectionsError, setCollectionsError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let isActive = true;
+
+    void fetchPublicShopProducts(12)
+      .then((rows) => {
+        if (!isActive) {
+          return;
+        }
+
+        setProducts(rows);
+      })
+      .catch((caughtError) => {
+        if (!isActive) {
+          return;
+        }
+
+        setProductsError(caughtError instanceof Error ? caughtError.message : "Unable to load new arrivals.");
+      })
+      .finally(() => {
+        if (isActive) {
+          setLoadingProducts(false);
+        }
+      });
+
+    void fetchPublicCollections()
+      .then((rows) => {
+        if (!isActive) {
+          return;
+        }
+
+        setCollections(rows);
+      })
+      .catch((caughtError) => {
+        if (!isActive) {
+          return;
+        }
+
+        setCollectionsError(caughtError instanceof Error ? caughtError.message : "Unable to load collections.");
+      })
+      .finally(() => {
+        if (isActive) {
+          setLoadingCollections(false);
+        }
+      });
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
   const scrollArrivals = (direction: "prev" | "next") => {
     const viewport = arrivalsViewportRef.current;
@@ -57,7 +115,10 @@ export function ShopPage() {
           </div>
           <div className="shop-arrivals__viewport" ref={arrivalsViewportRef}>
             <div className="shop-arrivals__track">
-              {shopProducts.map((product) => (
+              {loadingProducts ? <p className="shop-state">Loading new arrivals...</p> : null}
+              {productsError ? <p className="shop-state shop-state--error">{productsError}</p> : null}
+              {!loadingProducts && !productsError && products.length === 0 ? <p className="shop-state">No products available yet.</p> : null}
+              {products.map((product) => (
                 <div className="shop-arrivals__slide" key={product.id}>
                   <ProductCard product={product} />
                 </div>
@@ -70,7 +131,11 @@ export function ShopPage() {
 
       <section id="explore" className="page-section">
         <div className="container">
-          <ExploreCollections title="Start exploring." tabs={shopExploreTabs} items={shopCollections} />
+          {loadingCollections ? <p className="shop-state">Loading collections...</p> : null}
+          {collectionsError ? <p className="shop-state shop-state--error">{collectionsError}</p> : null}
+          {!loadingCollections && !collectionsError ? (
+            <ExploreCollections title="Start exploring." tabs={shopExploreTabs} items={collections} />
+          ) : null}
         </div>
       </section>
     </>
