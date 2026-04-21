@@ -45,6 +45,19 @@ select {
   min-height: 60vh;
 }
 
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand-logo img {
+  display: block;
+  width: 82px;
+  height: auto;
+  object-fit: contain;
+}
+
 .site-header {
   position: sticky;
   top: 0;
