@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import type { EntryOption } from "../data/siteContent";
+import { useTranslation } from "../i18n/language";
 
 type EntryOptionCardProps = {
   option: EntryOption;
 };
 
 export function EntryOptionCard({ option }: EntryOptionCardProps) {
+  const { copy } = useTranslation();
+
   return (
     <article className="entry-card">
       <div className="entry-card__content">
@@ -14,7 +17,7 @@ export function EntryOptionCard({ option }: EntryOptionCardProps) {
         <p className="entry-card__copy">{option.copy}</p>
         <div className="hero-card__actions">
           <Link to={option.to} className="action-button action-button--ghost">
-            Explore
+            {copy.common.explore}
           </Link>
         </div>
         <div className="entry-card__media">

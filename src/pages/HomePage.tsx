@@ -3,9 +3,14 @@ import { FastFacts } from "../components/FastFacts";
 import { PageHeroCarousel } from "../components/PageHeroCarousel";
 import { SectionHeader } from "../components/SectionHeader";
 import { TestimonialSpotlight } from "../components/TestimonialSpotlight";
-import { fastFacts, homeEntryOptions, homeFloatingAvatars, homeHeroSlides, homeTestimonials } from "../data/siteContent";
+import { useLocalizedSiteContent } from "../i18n/content";
+import { useTranslation } from "../i18n/language";
 
 export function HomePage() {
+  const { fastFacts, homeEntryOptions, homeFloatingAvatars, homeHeroSlides, homeTestimonials } =
+    useLocalizedSiteContent();
+  const { copy } = useTranslation();
+
   return (
     <>
       <PageHeroCarousel slides={homeHeroSlides} />
@@ -13,9 +18,9 @@ export function HomePage() {
       <section className="page-section">
         <div className="container">
           <SectionHeader
-            eyebrow="Choose your focus"
-            title="Start with the path that matches the job at hand."
-            body="The homepage stays simple on purpose: one route into House Clearance, one route into Shop, both presented with the same rounded surfaces and editorial pacing."
+            eyebrow={copy.home.focusEyebrow}
+            title={copy.home.focusTitle}
+            body={copy.home.focusBody}
           />
           <div className="entry-grid">
             {homeEntryOptions.map((option) => (
@@ -29,8 +34,8 @@ export function HomePage() {
         <div className="container">
           <FastFacts
             facts={fastFacts}
-            title="🚀 Fast Facts"
-            subtitle="We’re impartial and independent, and every day we create distinctive, world-class programmes and content"
+            title={copy.home.factsTitle}
+            subtitle={copy.home.factsSubtitle}
           />
           <div className="section-divider" aria-hidden="true" />
         </div>
@@ -39,8 +44,8 @@ export function HomePage() {
       <section className="page-section">
         <div className="container">
           <TestimonialSpotlight
-            title="Good news from far away 🏅"
-            subtitle="Let's see what people think of Ciseco"
+            title={copy.home.testimonialTitle}
+            subtitle={copy.home.testimonialSubtitle}
             testimonials={homeTestimonials}
             floatingAvatars={homeFloatingAvatars}
           />

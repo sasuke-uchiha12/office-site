@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import type { ExploreTab } from "../data/siteContent";
+import { useTranslation } from "../i18n/language";
 import type { CollectionCardView } from "../lib/catalog/types";
 
 type ExploreCollectionsProps = {
@@ -44,6 +45,7 @@ function ExploreTabIcon({ icon }: { icon: ExploreTab["icon"] }) {
 export function ExploreCollections({ title, tabs, items }: ExploreCollectionsProps) {
   const defaultTabId = tabs.find((tab) => tab.active)?.id ?? tabs[0]?.id ?? "";
   const [activeTabId, setActiveTabId] = useState(defaultTabId);
+  const { copy } = useTranslation();
 
   const visibleItems = useMemo(() => items.filter((item) => item.category === activeTabId), [activeTabId, items]);
 
@@ -89,7 +91,11 @@ export function ExploreCollections({ title, tabs, items }: ExploreCollectionsPro
                   <h3 className="shop-explore-card__title">{item.title}</h3>
                 </div>
                 <p className="shop-explore-card__count">{item.productCount}</p>
-                <Link className="shop-explore-card__link" to={`/shop/collections/${item.slug}`} aria-label={`Explore ${item.title}`} />
+                <Link
+                  className="shop-explore-card__link"
+                  to={`/shop/collections/${item.slug}`}
+                  aria-label={`${copy.common.exploreCollection}: ${item.title}`}
+                />
               </div>
             </article>
           ))}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ProductCard } from "../components/ProductCard";
+import { useTranslation } from "../i18n/language";
 import { fetchPublicCollectionBySlug, fetchPublicProductsForCollection } from "../lib/catalog/public";
 import type { CollectionCardView, ProductCardView } from "../lib/catalog/types";
 import { NotFoundPage } from "./NotFoundPage";
@@ -9,6 +10,7 @@ const PRODUCTS_PER_PAGE = 4;
 
 export function CollectionListingPage() {
   const { slug = "" } = useParams();
+  const { copy, language } = useTranslation();
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -22,7 +24,7 @@ export function CollectionListingPage() {
 
     let isActive = true;
 
-    void Promise.all([fetchPublicCollectionBySlug(slug), fetchPublicProductsForCollection(slug)])
+    void Promise.all([fetchPublicCollectionBySlug(slug, language), fetchPublicProductsForCollection(slug, language)])
       .then(([nextCollection, nextProducts]) => {
         if (!isActive) {
           return;
@@ -31,12 +33,12 @@ export function CollectionListingPage() {
         setCollection(nextCollection);
         setListingProducts(nextProducts);
       })
-      .catch((caughtError) => {
+      .catch(() => {
         if (!isActive) {
           return;
         }
 
-        setError(caughtError instanceof Error ? caughtError.message : "Unable to load collection.");
+        setError(copy.collection.error);
       })
       .finally(() => {
         if (isActive) {
@@ -47,7 +49,7 @@ export function CollectionListingPage() {
     return () => {
       isActive = false;
     };
-  }, [slug]);
+  }, [copy.collection.error, language, slug]);
 
   if (!loading && !error && !collection) {
     return <NotFoundPage />;
@@ -57,7 +59,7 @@ export function CollectionListingPage() {
     return (
       <section className="page-section">
         <div className="container">
-          <p className="shop-state">Loading collection...</p>
+          <p className="shop-state">{copy.collection.loading}</p>
         </div>
       </section>
     );
@@ -85,7 +87,7 @@ export function CollectionListingPage() {
         <div className="collection-listing__intro">
           <h1 className="collection-listing__title">{resolvedCollection.title}</h1>
           <p className="collection-listing__body">
-            A focused {resolvedCollection.title.toLowerCase()} edit using the same mirrored product language, simplified so the page stays calm and easy to scan.
+            {copy.collection.bodyPrefix} {resolvedCollection.title.toLowerCase()} {copy.collection.bodySuffix}
           </p>
         </div>
 
@@ -97,17 +99,17 @@ export function CollectionListingPage() {
           ))}
         </div>
 
-        {listingProducts.length === 0 ? <p className="shop-state">No products are assigned to this collection yet.</p> : null}
+        {listingProducts.length === 0 ? <p className="shop-state">{copy.collection.empty}</p> : null}
 
         {pageCount > 1 ? (
-          <nav className="pagination" aria-label="Collection pages">
+          <nav className="pagination" aria-label={copy.collection.paginationLabel}>
             <button
               className="pagination__button"
               type="button"
               onClick={() => setPage((current) => Math.max(1, current - 1))}
               disabled={page === 1}
             >
-              Previous
+              {copy.collection.previous}
             </button>
             <div className="pagination__pages">
               {Array.from({ length: pageCount }, (_, index) => {
@@ -131,7 +133,7 @@ export function CollectionListingPage() {
               onClick={() => setPage((current) => Math.min(pageCount, current + 1))}
               disabled={page === pageCount}
             >
-              Next
+              {copy.collection.next}
             </button>
           </nav>
         ) : null}

@@ -1,33 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { navigation } from "../data/siteContent";
+import { useLocalizedSiteContent } from "../i18n/content";
+import { useTranslation } from "../i18n/language";
 import { BrandLogo } from "./BrandLogo";
-
-const footerColumns = [
-  {
-    title: "Getting started",
-    links: [
-      { label: "Home", to: "/" },
-      { label: "House Clearance", to: "/house-clearance" },
-      { label: "Shop", to: "/shop" },
-    ],
-  },
-  {
-    title: "Explore",
-    links: [
-      { label: "About", to: "/about" },
-      { label: "Contact", to: "/contact" },
-      { label: "Fast Facts", to: "/#fast-facts" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Page flow", to: "/about" },
-      { label: "Visual system", to: "/shop" },
-      { label: "Service journey", to: "/house-clearance" },
-    ],
-  },
-];
 
 const socialLinks = [
   { label: "Facebook", href: "#", icon: "/_next/static/media/facebook.06da626e.svg" },
@@ -37,6 +11,36 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const { navigation } = useLocalizedSiteContent();
+  const { copy } = useTranslation();
+  const navLabel = (to: string) => navigation.find((item) => item.to === to)?.label ?? to;
+  const footerColumns = [
+    {
+      title: copy.footer.gettingStarted,
+      links: [
+        { label: navLabel("/"), to: "/" },
+        { label: navLabel("/house-clearance"), to: "/house-clearance" },
+        { label: navLabel("/shop"), to: "/shop" },
+      ],
+    },
+    {
+      title: copy.footer.explore,
+      links: [
+        { label: navLabel("/about"), to: "/about" },
+        { label: navLabel("/contact"), to: "/contact" },
+        { label: copy.footer.fastFacts, to: "/#fast-facts" },
+      ],
+    },
+    {
+      title: copy.footer.resources,
+      links: [
+        { label: copy.footer.pageFlow, to: "/about" },
+        { label: copy.footer.visualSystem, to: "/shop" },
+        { label: copy.footer.serviceJourney, to: "/house-clearance" },
+      ],
+    },
+  ];
+
   return (
     <footer className="site-footer">
       <div className="container">
@@ -44,10 +48,7 @@ export function Footer() {
           <div className="site-footer__layout">
             <div className="site-footer__brand">
               <BrandLogo />
-              <p className="site-footer__copy">
-                Thoughtful house clearance, curated finds, and a calmer browsing experience brought together in
-                one clear, easy-to-use journey.
-              </p>
+              <p className="site-footer__copy">{copy.footer.copy}</p>
 
               <div className="site-footer__socials">
                 {socialLinks.map((item) => (
@@ -78,14 +79,14 @@ export function Footer() {
           </div>
 
           <div className="site-footer__bottom">
-            <nav className="site-footer__bottom-links" aria-label="Footer navigation">
+            <nav className="site-footer__bottom-links" aria-label={copy.common.footerNavigation}>
               {navigation.map((item) => (
                 <NavLink key={item.to} to={item.to} end={item.to === "/"}>
                   {item.label}
                 </NavLink>
               ))}
             </nav>
-            <p className="m-0 text-sm text-neutral-500">Helping good pieces travel farther, with clarity at every step.</p>
+            <p className="m-0 text-sm text-neutral-500">{copy.footer.bottomCopy}</p>
           </div>
         </div>
       </div>
