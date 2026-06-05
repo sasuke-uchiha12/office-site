@@ -121,11 +121,10 @@ export async function uploadProductImage(productId: string, file: File): Promise
   await ensureAvifFile(file);
 
   const client = requireSupabaseClient();
-  const filePath = `${productId}/main.avif`;
+  const filePath = `${productId}/main-${Date.now()}.avif`;
   const { error } = await client.storage.from(PRODUCT_IMAGES_BUCKET).upload(filePath, file, {
     cacheControl: "3600",
     contentType: "image/avif",
-    upsert: true,
   });
 
   if (error) {
@@ -238,11 +237,10 @@ export async function uploadCollectionIcon(collectionId: string, file: File): Pr
   await ensureAvifFile(file);
 
   const client = requireSupabaseClient();
-  const filePath = `${collectionId}/icon.avif`;
+  const filePath = `${collectionId}/icon-${Date.now()}.avif`;
   const { error } = await client.storage.from(COLLECTION_IMAGES_BUCKET).upload(filePath, file, {
     cacheControl: "3600",
     contentType: "image/avif",
-    upsert: true,
   });
 
   if (error) {
