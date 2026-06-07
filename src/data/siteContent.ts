@@ -138,26 +138,26 @@ export const navigation: NavItem[] = [
 export const homeHeroSlides: HeroSlide[] = [
   {
     id: "home-1",
-    eyebrow: "House clearance with care",
-    title: "Clear a home without losing the story behind it.",
+    eyebrow: "RELIABLE CLEARANCE HELP",
+    title: "We clear, sort, remove, and leave it ready",
     copy:
-      "A calm, guided route for arranging clearances, sorting valuables, and choosing what can be donated, sold, or kept in circulation.",
+      "From the first inspection to the final handover, we manage every detail so your property is cleared without unnecessary stress.",
     image: "/_next/hero-right-1eb17.png",
     imageAlt: "Editorial hero collage for house clearance",
-    primaryCta: { label: "Explore house clearance", to: "/house-clearance" },
-    secondaryCta: { label: "View the shop", to: "/shop" },
+    primaryCta: { label: "Contact Us", to: "/house-clearance" },
+    secondaryCta: { label: "Our Process", to: "/shop" },
     tone: "default",
   },
   {
     id: "home-2",
-    eyebrow: "Shop restored finds",
-    title: "Bring good pieces farther with a shop that feels curated, not crowded.",
+    eyebrow: "SHOP SECOND-HAND",
+    title: "Useful pieces, fair prices, easy shopping.",
     copy:
-      "A lighter storefront flow built from the mirrored collection references, with restrained stock, clear categories, and a more editorial rhythm.",
+      "Browse available items from clearances and collections, all listed clearly with details and pricing. A simple way to find affordable products for your home.",
     image: "/_next/hero-right-2c7e8.png",
     imageAlt: "Editorial hero collage for shop experience",
-    primaryCta: { label: "Start shopping", to: "/shop" },
-    secondaryCta: { label: "Read our approach", to: "/about" },
+    primaryCta: { label: "Contact Us", to: "/shop" },
+    secondaryCta: { label: "Browse products", to: "/about" },
     tone: "rose",
   },
 ];
@@ -168,7 +168,7 @@ export const homeEntryOptions: EntryOption[] = [
     eyebrow: "Service",
     title: "House Clearance",
     copy:
-      "Plan a practical clearance with room-by-room guidance, collection windows, and a clear next step for what stays, goes, and gets rehomed.",
+      "Clear your property with a simple, organised service from sorting to removal. We handle furniture, household items, and unwanted goods carefully and leave the space ready for handover.",
     image: "/_next/booth186c3.png",
     imageAlt: "House clearance entry artwork",
     to: "/house-clearance",
@@ -178,7 +178,7 @@ export const homeEntryOptions: EntryOption[] = [
     eyebrow: "Shopping",
     title: "Shop",
     copy:
-      "Browse a compact set of new arrivals, featured collections, and familiar product-card patterns adapted from the mirrored source.",
+      "Browse selected second-hand furniture, home items, and useful pieces available at fair prices. Find quality products ready for a new home while giving reusable items a second life.",
     image: "/_next/promo1c027.png",
     imageAlt: "Shop entry artwork",
     to: "/shop",
@@ -188,20 +188,20 @@ export const homeEntryOptions: EntryOption[] = [
 export const fastFacts: FactItem[] = [
   {
     id: "fact-1",
-    value: "10 million",
-    label: "Articles have been public around the world (as of Sept. 30, 2025)",
+    value: "24–48h",
+    label: "Fast appointment options available for urgent house clearances and property cleanouts.",
     description: "",
   },
   {
     id: "fact-2",
-    value: "100,000",
-    label: "Registered users account and active users (as of Sept. 30, 2025)",
+    value: "100%",
+    label: "Clear pricing, careful handling, and responsible removal from the first visit to final handover.",
     description: "",
   },
   {
     id: "fact-3",
-    value: "220+",
-    label: "Countries and regions have our presence (as of Sept. 30, 2025)",
+    value: "All Areas",
+    label: "We clear homes, flats, basements, garages, offices, shops, and storage spaces.",
     description: "",
   },
 ];
@@ -317,26 +317,26 @@ export const homeFloatingAvatars: FloatingAvatar[] = [
 export const houseClearanceHeroSlides: HeroSlide[] = [
   {
     id: "clearance-1",
-    eyebrow: "Filter and discover",
-    title: "A stronger house-clearance layout for decisions that need structure.",
+    eyebrow: "HOUSE CLEARANCE SUPPORT",
+    title: "From first visit to clean handover.",
     copy:
-      "This page turns the service into a sequence: assess the property, identify what matters, choose a collection plan, and decide where each piece goes next.",
+      "Our approach focuses on careful sorting, responsible disposal, and giving reusable items a second chance wherever possible. From furniture and appliances to everyday household goods, we handle each clearance with practical planning and proper attention.",
     image: "/_next/hero-right-35b29.png",
     imageAlt: "House clearance hero image",
-    primaryCta: { label: "Book an enquiry", to: "/contact" },
-    secondaryCta: { label: "Browse the shop", to: "/shop" },
+    primaryCta: { label: "Contact Us", to: "/contact" },
+    secondaryCta: { label: "Our process", to: "/shop" },
     tone: "sky",
   },
   {
     id: "clearance-2",
-    eyebrow: "Supportive next steps",
-    title: "Keep the process clear, even when the contents are not.",
+    eyebrow: "HOUSE CLEARANCE SUPPORT",
+    title: "We make difficult clearances easier to manage.",
     copy:
-      "The supporting blocks borrow from collection, editorial, and callout patterns so the page feels related to the rest of the site while staying service-first.",
+      "We guide every clearance with careful planning, respectful handling, and clear communication. From sorting to removal, the process stays simple from start to finish. ",
     image: "/_next/promo2f621.png",
     imageAlt: "House clearance supporting image",
-    primaryCta: { label: "Talk to the team", to: "/contact" },
-    secondaryCta: { label: "Read about our process", to: "/about" },
+    primaryCta: { label: "Contact Us", to: "/contact" },
+    secondaryCta: { label: "Our Process", to: "/about" },
     tone: "default",
   },
 ];
@@ -373,7 +373,7 @@ export const houseClearanceSteps: HowItWorksStep[] = [
     id: "step-4",
     step: "Step 4",
     title: "Clear and rehome",
-    copy: "Complete the clearance and move suitable pieces into donation, resale, or safe retention instead of treating everything the same.",
+    copy: "Complete the clearance and move suitable pieces into donation or resale instead of treating everything the same.",
     image: "/_next/HIW4imgaa57.png",
     imageAlt: "Rehome illustration",
     badgeClass: "how-it-works__badge how-it-works__badge--purple",
@@ -383,21 +383,33 @@ export const houseClearanceSteps: HowItWorksStep[] = [
 export const houseClearanceFaqs: FaqItem[] = [
   {
     id: "faq-1",
-    question: "Can you work room by room instead of clearing everything at once?",
+    question: "Do you clear full houses and single rooms?",
     answer:
-      "Yes. The page is structured to support partial clearances, which is often the right fit when paperwork, family review, or sentimental sorting still needs time.",
+      "Yes. We handle complete house clearances as well as single rooms, basements, attics, garages, apartments, and storage spaces.",
   },
   {
     id: "faq-2",
-    question: "Do items suitable for resale or donation stay in the same flow?",
+    question: "Do I need to prepare everything before you arrive?",
     answer:
-      "They do. The service route and the shop route are connected so suitable items can move into the right next channel rather than disappearing into a generic removal process.",
+      "No. You only need to point out the items you want to keep. Our team can sort, carry, remove, and separate the remaining items.",
   },
   {
     id: "faq-3",
-    question: "Is this a live booking system?",
+    question: "Can useful items be reused or sold?",
     answer:
-      "Not in this first version. The contact path is intentionally lightweight and static while the React migration focuses on structure, content flow, and visual consistency.",
+      "Yes. Furniture, appliances, and household items that are still usable can be kept aside for resale, donation, or reuse whenever possible.",
+  },
+  {
+    id: "faq-4",
+    question: "Do you offer a fixed price before the work starts?",
+    answer:
+      "Yes. After checking the property and the amount of work involved, we provide a clear quote so you know the cost in advance.",
+  },
+  {
+    id: "faq-5",
+    question: "Can you clear basements, garages, and attics?",
+    answer:
+      "Yes. We clear cluttered storage areas, old furniture, boxes, bulky waste, tools, and other unwanted items from these spaces.",
   },
 ];
 
@@ -405,25 +417,25 @@ export const shopHeroSlides: HeroSlide[] = [
   {
     id: "shop-1",
     eyebrow: "New arrivals",
-    title: "A smaller, sharper shop front built from the mirrored collection language.",
+    title: "Quality second-hand finds ready for a new home.",
     copy:
-      "The shop page keeps the two-slide hero, featured product cards, and collection-led discovery while staying within the provided asset set.",
+      "Browse selected furniture, household items, décor, and useful everyday pieces collected from clearances. Each item is offered clearly, fairly, and ready for pickup or enquiry.",
     image: "/_next/promo1-dark57e7.png",
     imageAlt: "Shop hero artwork",
-    primaryCta: { label: "See new arrivals", to: "/shop#new-arrivals" },
+    primaryCta: { label: "Contact Us", to: "/shop#new-arrivals" },
     secondaryCta: { label: "Start exploring", to: "/shop#explore" },
     tone: "rose",
   },
   {
     id: "shop-2",
     eyebrow: "Curated collections",
-    title: "Shop the latest from familiar product references without inventing a wider catalogue.",
+    title: "Browse selected clearance finds that are still made to be used.",
     copy:
-      "The grid below stays intentionally finite: a restrained range of products, cleaner spacing, and consistent cards that match the source styling rhythm.",
+      "Every item in our shop is chosen for its condition, usefulness, and value. Browse furniture, home accessories, and practical goods before they move to their next home.",
     image: "/_next/qlecbb.png",
     imageAlt: "Curated collection artwork",
-    primaryCta: { label: "Browse products", to: "/shop#new-arrivals" },
-    secondaryCta: { label: "View house clearance", to: "/house-clearance" },
+    primaryCta: { label: "Contact Us", to: "/shop#new-arrivals" },
+    secondaryCta: { label: "Start exploring", to: "/house-clearance" },
     tone: "default",
   },
 ];
@@ -806,13 +818,13 @@ export const contactMethods: ContactMethod[] = [
   {
     id: "contact-1",
     label: "General enquiries",
-    value: "hello@hema-office.example",
+    value: "piratenschatzkammer1@gmail.com",
     detail: "Use this path for questions about the React rebuild, content flow, and general service requests.",
   },
   {
     id: "contact-2",
     label: "House clearance support",
-    value: "+44 (0)20 5555 0148",
+    value: "+49 176 79090615",
     detail: "Best for discussing timing, scale, and what should happen to different categories of items.",
   },
   {
