@@ -33,14 +33,14 @@ export const uiCopy = {
     },
     home: {
       focusEyebrow: "Choose your focus",
-      focusTitle: "Start with the path that matches the job at hand.",
+      focusTitle: "Start with the service that fits your need.",
       focusBody:
-        "The homepage stays simple on purpose: one route into House Clearance, one route into Shop, both presented with the same rounded surfaces and editorial pacing.",
-      factsTitle: "🚀 Fast Facts",
+        "Whether you need a complete house clearance or want to browse reusable items, choose the path that works best for you. We keep both services simple, clear, and easy to access.",
+      factsTitle: "What You Can Expect",
       factsSubtitle:
-        "We’re impartial and independent, and every day we create distinctive, world-class programmes and content",
-      testimonialTitle: "Good news from far away 🏅",
-      testimonialSubtitle: "Let's see what people think of Ciseco",
+        "From inspection to removal, we focus on reliable service, fair pricing, and careful handling. Each clearance is completed with proper sorting, responsible disposal, and a tidy finish.",
+      testimonialTitle: "Trusted by homes near and far 🏅",
+      testimonialSubtitle: "See what our customers say about our house clearance and shop service.",
     },
     house: {
       processEyebrow: "Filter and discover",
@@ -48,20 +48,30 @@ export const uiCopy = {
       processMutedSuffix: "One consistent route.",
       processBody:
         "A clearer house-clearance process starts with one visible sequence: review the property, sort what matters, plan collection, and move suitable pieces into the right next home.",
-      supportEyebrow: "Supporting content",
-      supportTitle: "A stronger supporting layout for the practical questions that follow the first enquiry.",
-      supportCopy:
-        "Borrowing from the mirrored promotional and collection references lets this page add depth without becoming visually disconnected. The split layout below is where reassurance, timing, and next-step explanation sit best.",
+      supportEyebrow: "We Clear What You No Longer Need",
+      supportTitle: "Every clearance is different. We take a flexible approach and adapt the work to the situation.",
+      supportCopy: `Our house clearance service can include:
+
+• apartment clearances
+• full house clearances
+• cellar and attic clearances
+• garage and storage room clearances
+• furniture removal
+• sorting of reusable items
+• preparation for pickup or sale
+• disposal support for unwanted items
+
+We handle the work step by step, so the clearance becomes less stressful and more manageable.`,
       supportImageAlt: "Supporting house clearance image",
       contactCta: "Contact the team",
       storyCta: "Read our story",
       faqEyebrow: "Mini FAQs",
       faqTitle: "Short answers for the questions that usually arrive first.",
-      faqBody: "The accordion interaction is rebuilt directly in React and stays intentionally lightweight.",
+      faqBody: "Here are the most common questions customers ask before starting a house clearance.",
     },
     shop: {
       arrivalsTitle: "New Arrivals.",
-      arrivalsSuffix: "REY backpacks & bags",
+      arrivalsSuffix: "Household items, furniture, and more",
       previousArrivals: "Show previous arrivals",
       nextArrivals: "Show next arrivals",
       loadingArrivals: "Loading new arrivals...",
@@ -85,12 +95,12 @@ export const uiCopy = {
     about: {
       title: "👋 About Us.",
       body:
-        "We’re impartial and independent, and every day we create distinctive, world-class programmes and content which inform, educate and entertain millions of people around the world.",
+        "At Piratenschatzkammer, we believe that every home, cellar, attic, garage, and storage room can hold forgotten treasures. What may no longer be needed by one person can still be useful, beautiful, or valuable to someone else. We are based in Dudweiler, Saarbrücken, and offer practical support for house clearances, apartment clearances, storage room clearances, and the sale of selected second-hand items. Our goal is simple: to make clearances easier, more organized, and more useful while giving well-preserved items a second chance.",
     },
     contact: {
       title: "Contact",
       addressHeading: "🗺 ADDRESS",
-      addressValue: "Photo booth tattooed prism, portland taiyaki hoodie neutra typewriter",
+      addressValue: "Piratenschatzkammer Trier Straße 6 66125 Dudweiler, Saarbrücken Germany",
       emailHeading: "💌 EMAIL",
       phoneHeading: "☎ PHONE",
       socialsHeading: "🌏 SOCIALS",
@@ -98,15 +108,15 @@ export const uiCopy = {
     },
     footer: {
       copy:
-        "Thoughtful house clearance, curated finds, and a calmer browsing experience brought together in one clear, easy-to-use journey.",
+        "Reliable house clearance, careful sorting, and selected second-hand finds brought together in one simple, easy-to-use service.",
       gettingStarted: "Getting started",
       explore: "Explore",
       resources: "Resources",
-      fastFacts: "Fast Facts",
-      pageFlow: "Page flow",
-      visualSystem: "Visual system",
-      serviceJourney: "Service journey",
-      bottomCopy: "Helping good pieces travel farther, with clarity at every step.",
+      fastFacts: "What can you expect",
+      pageFlow: "Imprint",
+      visualSystem: "Data Protection",
+      // serviceJourney: "Service journey",
+      bottomCopy: "Buying and selling of used goods.",
     },
     notFound: {
       eyebrow: "404 reference adapted",
@@ -139,15 +149,15 @@ export const uiCopy = {
       remove: "Gespeicherten Artikel entfernen",
     },
     home: {
-      focusEyebrow: "Wählen Sie Ihren Fokus",
-      focusTitle: "Starten Sie mit dem Weg, der zur Aufgabe passt.",
+      focusEyebrow: "Wählen Sie Ihren Bedarf",
+      focusTitle: "Starten Sie mit dem Service, der zu Ihrem Bedarf passt.",
       focusBody:
-        "Die Startseite bleibt bewusst einfach: ein Weg zur Haushaltsauflösung, ein Weg zum Shop, beide mit derselben ruhigen Gestaltung und klaren Führung.",
-      factsTitle: "🚀 Kurz & Klar",
+        "Ob Sie eine komplette Haushaltsauflösung benötigen oder wiederverwendbare Artikel ansehen möchten: Wählen Sie den passenden Weg. Wir halten beide Services einfach, klar und leicht zugänglich.",
+      factsTitle: "Was Sie erwarten können",
       factsSubtitle:
-        "Wir arbeiten unabhängig und erstellen jeden Tag prägnante Inhalte, die Menschen informieren, unterstützen und unterhalten.",
-      testimonialTitle: "Gute Nachrichten von weitem 🏅",
-      testimonialSubtitle: "Was Menschen über Ciseco sagen",
+        "Von der Besichtigung bis zur Entfernung legen wir Wert auf zuverlässigen Service, faire Preise und sorgfältige Handhabung. Jede Räumung erfolgt mit ordentlicher Sortierung, verantwortungsvoller Entsorgung und sauberer Übergabe.",
+      testimonialTitle: "Vertrauen von nah und fern 🏅",
+      testimonialSubtitle: "Lesen Sie, was unsere Kunden über Haushaltsauflösung und Shop-Service sagen.",
     },
     house: {
       processEyebrow: "Filtern und entdecken",
@@ -155,20 +165,30 @@ export const uiCopy = {
       processMutedSuffix: "Ein klarer Ablauf.",
       processBody:
         "Eine gute Haushaltsauflösung beginnt mit einer sichtbaren Reihenfolge: Immobilie prüfen, Wichtiges sortieren, Abholung planen und passende Stücke weitergeben.",
-      supportEyebrow: "Unterstützende Inhalte",
-      supportTitle: "Ein stärkerer Begleitbereich für praktische Fragen nach der ersten Anfrage.",
-      supportCopy:
-        "Die Gestaltung übernimmt ruhige Muster aus Aktion, Kollektion und Hinweisbereich, damit diese Seite Tiefe bekommt und dennoch klar mit dem restlichen Auftritt verbunden bleibt.",
+      supportEyebrow: "Wir räumen, was Sie nicht mehr benötigen",
+      supportTitle: "Jede Räumung ist anders. Wir arbeiten flexibel und passen den Ablauf an die Situation an.",
+      supportCopy: `Unser Service für Haushaltsauflösungen kann Folgendes umfassen:
+
+• Wohnungsauflösungen
+• komplette Haushaltsauflösungen
+• Keller- und Dachbodenräumungen
+• Garagen- und Lagerraumräumungen
+• Möbelabholung und Möbelentfernung
+• Sortierung wiederverwendbarer Gegenstände
+• Vorbereitung zur Abholung oder zum Verkauf
+• Unterstützung bei der Entsorgung unerwünschter Artikel
+
+Wir bearbeiten die Räumung Schritt für Schritt, damit sie weniger stressig und besser planbar wird.`,
       supportImageAlt: "Begleitbild zur Haushaltsauflösung",
       contactCta: "Team kontaktieren",
       storyCta: "Unsere Geschichte lesen",
       faqEyebrow: "Kurze FAQs",
       faqTitle: "Kurze Antworten auf die Fragen, die meist zuerst kommen.",
-      faqBody: "Das Akkordeon ist direkt in React umgesetzt und bleibt bewusst leichtgewichtig.",
+      faqBody: "Hier finden Sie die häufigsten Fragen, die Kunden vor einer Haushaltsauflösung stellen.",
     },
     shop: {
       arrivalsTitle: "Neu eingetroffen.",
-      arrivalsSuffix: "REY Rucksäcke & Taschen",
+      arrivalsSuffix: "Haushaltsartikel, Möbel und mehr",
       previousArrivals: "Vorherige Neuheiten anzeigen",
       nextArrivals: "Nächste Neuheiten anzeigen",
       loadingArrivals: "Neuheiten werden geladen...",
@@ -192,12 +212,12 @@ export const uiCopy = {
     about: {
       title: "👋 Über uns.",
       body:
-        "Wir arbeiten unabhängig und erstellen jeden Tag eigenständige, hochwertige Inhalte, die Menschen auf der ganzen Welt informieren, bilden und unterhalten.",
+        "Bei Piratenschatzkammer glauben wir, dass jedes Haus, jeder Keller, Dachboden, jede Garage und jeder Lagerraum vergessene Schätze enthalten kann. Was eine Person nicht mehr benötigt, kann für jemand anderen noch nützlich, schön oder wertvoll sein. Wir sitzen in Dudweiler, Saarbrücken, und bieten praktische Unterstützung bei Haushaltsauflösungen, Wohnungsauflösungen, Lagerraumräumungen und dem Verkauf ausgewählter Second-Hand-Artikel. Unser Ziel ist einfach: Räumungen leichter, geordneter und sinnvoller zu machen und gut erhaltenen Gegenständen eine zweite Chance zu geben.",
     },
     contact: {
       title: "Kontakt",
       addressHeading: "🗺 ADRESSE",
-      addressValue: "Photo booth tattooed prism, Portland Taiyaki Hoodie Neutra Typewriter",
+      addressValue: "Piratenschatzkammer Trier Straße 6 66125 Dudweiler, Saarbrücken Deutschland",
       emailHeading: "💌 E-MAIL",
       phoneHeading: "☎ TELEFON",
       socialsHeading: "🌏 SOZIALE MEDIEN",
@@ -205,15 +225,15 @@ export const uiCopy = {
     },
     footer: {
       copy:
-        "Sorgfältige Haushaltsauflösung, kuratierte Fundstücke und ein ruhigeres Browsing-Erlebnis in einem klaren Ablauf.",
+        "Zuverlässige Haushaltsauflösung, sorgfältige Sortierung und ausgewählte Second-Hand-Fundstücke in einem einfachen, leicht nutzbaren Service.",
       gettingStarted: "Loslegen",
       explore: "Entdecken",
       resources: "Ressourcen",
-      fastFacts: "Kurz & Klar",
-      pageFlow: "Seitenfluss",
-      visualSystem: "Visuelles System",
+      fastFacts: "Was Sie erwarten können",
+      pageFlow: "Impressum",
+      visualSystem: "Datenschutz",
       serviceJourney: "Serviceablauf",
-      bottomCopy: "Damit gute Stücke weiterreisen können, mit Klarheit in jedem Schritt.",
+      bottomCopy: "An- und Verkauf von gebrauchten Waren.",
     },
     notFound: {
       eyebrow: "404 Referenz angepasst",

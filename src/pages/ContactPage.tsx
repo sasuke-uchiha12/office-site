@@ -64,7 +64,7 @@ export function ContactPage() {
     {
       id: "email",
       heading: copy.contact.emailHeading,
-      value: contactMethods[0]?.value ?? "hello@hema-office.example",
+      value: contactMethods[0]?.value ?? "piratenschatzkammer1@gmail.com",
     },
     {
       id: "phone",

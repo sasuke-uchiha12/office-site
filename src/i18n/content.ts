@@ -48,58 +48,58 @@ const deNavigation: Record<string, Partial<NavItem>> = {
 
 const deHeroSlides: Record<string, Partial<HeroSlide>> = {
   "home-1": {
-    eyebrow: "Haushaltsauflösung mit Sorgfalt",
-    title: "Ein Zuhause räumen, ohne die Geschichte dahinter zu verlieren.",
+    eyebrow: "ZUVERLÄSSIGE RÄUMUNGSHILFE",
+    title: "Wir räumen, sortieren, entfernen und übergeben sauber",
     copy:
-      "Ein ruhiger, geführter Weg für Haushaltsauflösungen, Wertsortierung und die Entscheidung, was gespendet, verkauft oder weiter genutzt werden kann.",
+      "Von der ersten Besichtigung bis zur finalen Übergabe kümmern wir uns um jedes Detail, damit Ihre Immobilie ohne unnötigen Stress geräumt wird.",
     imageAlt: "Editoriale Hero-Collage zur Haushaltsauflösung",
-    primaryCta: { label: "Haushaltsauflösung entdecken", to: "/house-clearance" },
-    secondaryCta: { label: "Shop ansehen", to: "/shop" },
+    primaryCta: { label: "Kontakt aufnehmen", to: "/house-clearance" },
+    secondaryCta: { label: "Unser Ablauf", to: "/shop" },
   },
   "home-2": {
-    eyebrow: "Restaurierte Fundstücke shoppen",
-    title: "Gute Stücke weiterbringen mit einem Shop, der kuratiert statt überladen wirkt.",
+    eyebrow: "SECOND-HAND SHOPPEN",
+    title: "Nützliche Stücke, faire Preise, einfaches Einkaufen.",
     copy:
-      "Ein leichterer Storefront-Ablauf mit klaren Kategorien, begrenztem Bestand und einem redaktionellen Rhythmus.",
+      "Stöbern Sie in verfügbaren Artikeln aus Räumungen und Sammlungen, klar gelistet mit Details und Preisen. Eine einfache Möglichkeit, bezahlbare Produkte für Ihr Zuhause zu finden.",
     imageAlt: "Editoriale Hero-Collage für das Shop-Erlebnis",
-    primaryCta: { label: "Shopping starten", to: "/shop" },
-    secondaryCta: { label: "Unseren Ansatz lesen", to: "/about" },
+    primaryCta: { label: "Kontakt aufnehmen", to: "/shop" },
+    secondaryCta: { label: "Produkte ansehen", to: "/about" },
   },
   "clearance-1": {
-    eyebrow: "Filtern und entdecken",
-    title: "Ein klarerer Haushaltsauflösungsbereich für Entscheidungen, die Struktur brauchen.",
+    eyebrow: "UNTERSTÜTZUNG BEI HAUSHALTSAUFLÖSUNGEN",
+    title: "Vom ersten Besuch bis zur sauberen Übergabe.",
     copy:
-      "Diese Seite macht den Service zu einer Reihenfolge: Immobilie einschätzen, Wichtiges erkennen, Abholung planen und entscheiden, wohin jedes Stück als Nächstes geht.",
+      "Unser Ansatz konzentriert sich auf sorgfältige Sortierung, verantwortungsvolle Entsorgung und darauf, wiederverwendbaren Gegenständen möglichst eine zweite Chance zu geben. Von Möbeln und Geräten bis zu alltäglichen Haushaltswaren behandeln wir jede Räumung mit praktischer Planung und der nötigen Aufmerksamkeit.",
     imageAlt: "Hero-Bild zur Haushaltsauflösung",
-    primaryCta: { label: "Anfrage buchen", to: "/contact" },
-    secondaryCta: { label: "Shop ansehen", to: "/shop" },
+    primaryCta: { label: "Kontakt aufnehmen", to: "/contact" },
+    secondaryCta: { label: "Unser Ablauf", to: "/shop" },
   },
   "clearance-2": {
-    eyebrow: "Unterstützende nächste Schritte",
-    title: "Den Ablauf klar halten, auch wenn die Inhalte es nicht sind.",
+    eyebrow: "UNTERSTÜTZUNG BEI HAUSHALTSAUFLÖSUNGEN",
+    title: "Wir machen schwierige Räumungen leichter handhabbar.",
     copy:
-      "Die begleitenden Blöcke nutzen Muster aus Kollektion, Editorial und Callout, damit die Seite mit dem restlichen Auftritt verbunden bleibt und serviceorientiert wirkt.",
+      "Wir begleiten jede Räumung mit sorgfältiger Planung, respektvollem Umgang und klarer Kommunikation. Vom Sortieren bis zur Entfernung bleibt der Ablauf von Anfang bis Ende einfach.",
     imageAlt: "Unterstützendes Bild zur Haushaltsauflösung",
-    primaryCta: { label: "Mit dem Team sprechen", to: "/contact" },
-    secondaryCta: { label: "Mehr zum Prozess", to: "/about" },
+    primaryCta: { label: "Kontakt aufnehmen", to: "/contact" },
+    secondaryCta: { label: "Unser Ablauf", to: "/about" },
   },
   "shop-1": {
     eyebrow: "Neuheiten",
-    title: "Eine kleinere, klarere Shop-Front aus der bekannten Kollektionssprache.",
+    title: "Hochwertige Second-Hand-Funde bereit für ein neues Zuhause.",
     copy:
-      "Die Shop-Seite behält Hero-Slider, Produktkarten und kollektionsbasierte Entdeckung bei, bleibt aber bewusst kompakt.",
+      "Stöbern Sie in ausgewählten Möbeln, Haushaltsartikeln, Deko und nützlichen Alltagsstücken aus Räumungen. Jeder Artikel wird klar, fair und bereit zur Abholung oder Anfrage angeboten.",
     imageAlt: "Shop-Hero-Grafik",
-    primaryCta: { label: "Neuheiten ansehen", to: "/shop#new-arrivals" },
+    primaryCta: { label: "Kontakt aufnehmen", to: "/shop#new-arrivals" },
     secondaryCta: { label: "Entdecken starten", to: "/shop#explore" },
   },
   "shop-2": {
     eyebrow: "Kuratierte Kollektionen",
-    title: "Shoppen Sie aktuelle Stücke aus vertrauten Produktreferenzen, ohne einen breiteren Katalog zu erfinden.",
+    title: "Stöbern Sie in ausgewählten Räumungsfunden, die weiterhin genutzt werden können.",
     copy:
-      "Das Raster bleibt bewusst begrenzt: weniger Produkte, klare Abstände und Karten, die dem Rhythmus der Vorlage folgen.",
+      "Jeder Artikel in unserem Shop wird nach Zustand, Nutzen und Wert ausgewählt. Entdecken Sie Möbel, Wohnaccessoires und praktische Waren, bevor sie in ihr nächstes Zuhause ziehen.",
     imageAlt: "Grafik zu kuratierten Kollektionen",
-    primaryCta: { label: "Produkte ansehen", to: "/shop#new-arrivals" },
-    secondaryCta: { label: "Haushaltsauflösung ansehen", to: "/house-clearance" },
+    primaryCta: { label: "Kontakt aufnehmen", to: "/shop#new-arrivals" },
+    secondaryCta: { label: "Entdecken starten", to: "/house-clearance" },
   },
 };
 
@@ -108,27 +108,27 @@ const deEntryOptions: Record<string, Partial<EntryOption>> = {
     eyebrow: "Service",
     title: "Haushaltsauflösung",
     copy:
-      "Planen Sie eine praktische Haushaltsauflösung mit Raum-für-Raum-Orientierung, Abholfenstern und klaren nächsten Schritten.",
+      "Räumen Sie Ihre Immobilie mit einem einfachen, organisierten Service von der Sortierung bis zur Entfernung. Wir behandeln Möbel, Haushaltswaren und unerwünschte Gegenstände sorgfältig und hinterlassen den Raum bereit zur Übergabe.",
     imageAlt: "Illustration zur Haushaltsauflösung",
   },
   "entry-shop": {
     eyebrow: "Shopping",
     title: "Shop",
     copy:
-      "Durchstöbern Sie kompakte Neuheiten, ausgewählte Kollektionen und vertraute Produktkarten aus der gespiegelten Vorlage.",
+      "Stöbern Sie in ausgewählten Second-Hand-Möbeln, Haushaltsartikeln und nützlichen Stücken zu fairen Preisen. Finden Sie hochwertige Produkte für ein neues Zuhause und geben Sie wiederverwendbaren Gegenständen ein zweites Leben.",
     imageAlt: "Shop-Illustration",
   },
 };
 
 const deFastFacts: Record<string, Partial<FactItem>> = {
   "fact-1": {
-    label: "Artikel wurden weltweit veröffentlicht (Stand: 30. Sept. 2025)",
+    label: "Schnelle Terminoptionen für dringende Haushaltsauflösungen und Immobilienräumungen verfügbar.",
   },
   "fact-2": {
-    label: "registrierte Konten und aktive Nutzer (Stand: 30. Sept. 2025)",
+    label: "Klare Preise, sorgfältige Handhabung und verantwortungsvolle Entfernung vom ersten Besuch bis zur finalen Übergabe.",
   },
   "fact-3": {
-    label: "Länder und Regionen mit unserer Präsenz (Stand: 30. Sept. 2025)",
+    label: "Wir räumen Häuser, Wohnungen, Keller, Garagen, Büros, Geschäfte und Lagerräume.",
   },
 };
 
@@ -197,26 +197,36 @@ const deHouseSteps: Record<string, Partial<HowItWorksStep>> = {
     step: "Schritt 4",
     title: "Räumen und weitergeben",
     copy:
-      "Schließen Sie die Räumung ab und bringen Sie geeignete Stücke in Spende, Weiterverkauf oder sichere Aufbewahrung.",
+      "Schließen Sie die Räumung ab und bringen Sie geeignete Stücke in Spende oder Weiterverkauf, statt alles gleich zu behandeln.",
     imageAlt: "Illustration zum Weitergeben",
   },
 };
 
 const deFaqs: Record<string, Partial<FaqItem>> = {
   "faq-1": {
-    question: "Können Sie raumweise arbeiten, statt alles auf einmal zu räumen?",
+    question: "Räumen Sie ganze Häuser und einzelne Zimmer?",
     answer:
-      "Ja. Die Seite ist auf Teilräumungen ausgelegt, was oft sinnvoll ist, wenn Unterlagen, Familienabstimmung oder emotionale Sortierung noch Zeit brauchen.",
+      "Ja. Wir übernehmen komplette Haushaltsauflösungen ebenso wie einzelne Zimmer, Keller, Dachböden, Garagen, Wohnungen und Lagerräume.",
   },
   "faq-2": {
-    question: "Bleiben Stücke für Weiterverkauf oder Spende im selben Ablauf?",
+    question: "Muss ich alles vorbereiten, bevor Sie kommen?",
     answer:
-      "Ja. Service-Route und Shop-Route sind verbunden, damit passende Stücke in den richtigen nächsten Kanal gehen statt in einem generischen Räumungsprozess zu verschwinden.",
+      "Nein. Sie müssen nur zeigen, welche Gegenstände Sie behalten möchten. Unser Team kann die übrigen Artikel sortieren, tragen, entfernen und trennen.",
   },
   "faq-3": {
-    question: "Ist das ein Live-Buchungssystem?",
+    question: "Können nützliche Gegenstände wiederverwendet oder verkauft werden?",
     answer:
-      "Nicht in dieser ersten Version. Der Kontaktweg bleibt bewusst leicht und statisch, während der React-Umbau Struktur, Inhalte und visuelle Konsistenz priorisiert.",
+      "Ja. Möbel, Geräte und Haushaltsartikel, die noch nutzbar sind, können nach Möglichkeit für Weiterverkauf, Spende oder Wiederverwendung beiseitegestellt werden.",
+  },
+  "faq-4": {
+    question: "Bieten Sie vor Beginn der Arbeiten einen Festpreis an?",
+    answer:
+      "Ja. Nach Prüfung der Immobilie und des Arbeitsumfangs erstellen wir ein klares Angebot, damit Sie die Kosten im Voraus kennen.",
+  },
+  "faq-5": {
+    question: "Räumen Sie Keller, Garagen und Dachböden?",
+    answer:
+      "Ja. Wir räumen überfüllte Lagerräume, alte Möbel, Kartons, Sperrmüll, Werkzeuge und andere unerwünschte Gegenstände aus diesen Bereichen.",
   },
 };
 
@@ -309,17 +319,17 @@ const deAboutValues: Record<string, Partial<FactItem>> = {
 const deContactMethods: Record<string, Partial<ContactMethod>> = {
   "contact-1": {
     label: "Allgemeine Anfragen",
-    detail: "Für Fragen zum React-Umbau, Inhaltsfluss und allgemeinen Serviceanfragen.",
+    detail: "Nutzen Sie diesen Kontaktweg für Fragen zum Service, zum Ablauf und zu allgemeinen Anliegen.",
   },
   "contact-2": {
     label: "Support für Haushaltsauflösung",
-    detail: "Am besten für Zeitplanung, Umfang und den Umgang mit verschiedenen Kategorien von Gegenständen.",
+    detail: "Am besten geeignet, um Zeitplan, Umfang und den Umgang mit verschiedenen Kategorien von Gegenständen zu besprechen.",
   },
   "contact-3": {
     label: "Studiozeiten",
     value: "Mo bis Fr, 9:00 bis 17:30",
     detail:
-      "Die erste Version hält Kontaktinformationen statisch und informativ statt unverifizierte Live-Terminplanung einzubauen.",
+      "Die erste Version hält Kontaktinformationen statisch und informativ, statt eine unverifizierte Live-Terminplanung einzubauen.",
   },
 };
 
