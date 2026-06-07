@@ -3,9 +3,13 @@ import { HowItWorks } from "../components/HowItWorks";
 import { MiniFaqAccordion } from "../components/MiniFaqAccordion";
 import { PageHeroCarousel } from "../components/PageHeroCarousel";
 import { SectionHeader } from "../components/SectionHeader";
-import { houseClearanceFaqs, houseClearanceHeroSlides, houseClearanceSteps } from "../data/siteContent";
+import { useLocalizedSiteContent } from "../i18n/content";
+import { useTranslation } from "../i18n/language";
 
 export function HouseClearancePage() {
+  const { houseClearanceFaqs, houseClearanceHeroSlides, houseClearanceSteps } = useLocalizedSiteContent();
+  const { copy } = useTranslation();
+
   return (
     <>
       <PageHeroCarousel slides={houseClearanceHeroSlides} />
@@ -13,10 +17,10 @@ export function HouseClearancePage() {
       <section className="page-section">
         <div className="container">
           <SectionHeader
-            eyebrow="Filter and discover"
-            title="Four parts."
-            mutedSuffix="One consistent route."
-            body="A clearer house-clearance process starts with one visible sequence: review the property, sort what matters, plan collection, and move suitable pieces into the right next home."
+            eyebrow={copy.house.processEyebrow}
+            title={copy.house.processTitle}
+            mutedSuffix={copy.house.processMutedSuffix}
+            body={copy.house.processBody}
           />
           <HowItWorks steps={houseClearanceSteps} />
         </div>
@@ -25,13 +29,13 @@ export function HouseClearancePage() {
       <section className="page-section">
         <div className="container">
           <ContentSection
-            eyebrow="Supporting content"
-            title="A stronger supporting layout for the practical questions that follow the first enquiry."
-            copy="Borrowing from the mirrored promotional and collection references lets this page add depth without becoming visually disconnected. The split layout below is where reassurance, timing, and next-step explanation sit best."
+            eyebrow={copy.house.supportEyebrow}
+            title={copy.house.supportTitle}
+            copy={copy.house.supportCopy}
             image="/_next/pexels-photo-6802060b51b.jpg"
-            imageAlt="Supporting house clearance image"
-            primaryCta={{ label: "Contact the team", to: "/contact" }}
-            secondaryCta={{ label: "Read our story", to: "/about" }}
+            imageAlt={copy.house.supportImageAlt}
+            primaryCta={{ label: copy.house.contactCta, to: "/contact" }}
+            secondaryCta={{ label: copy.house.storyCta, to: "/about" }}
           />
         </div>
       </section>
@@ -39,9 +43,9 @@ export function HouseClearancePage() {
       <section className="page-section">
         <div className="container">
           <SectionHeader
-            eyebrow="Mini FAQs"
-            title="Short answers for the questions that usually arrive first."
-            body="The accordion interaction is rebuilt directly in React and stays intentionally lightweight."
+            eyebrow={copy.house.faqEyebrow}
+            title={copy.house.faqTitle}
+            body={copy.house.faqBody}
           />
           <MiniFaqAccordion items={houseClearanceFaqs} />
         </div>

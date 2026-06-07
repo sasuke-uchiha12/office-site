@@ -2,12 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import { ExploreCollections } from "../components/ExploreCollections";
 import { PageHeroCarousel } from "../components/PageHeroCarousel";
 import { ProductCard } from "../components/ProductCard";
-import { shopExploreTabs, shopHeroSlides } from "../data/siteContent";
+import { useLocalizedSiteContent } from "../i18n/content";
+import { useTranslation } from "../i18n/language";
 import { fetchPublicCollections, fetchPublicShopProducts } from "../lib/catalog/public";
 import type { CollectionCardView, ProductCardView } from "../lib/catalog/types";
 
 export function ShopPage() {
   const arrivalsViewportRef = useRef<HTMLDivElement | null>(null);
+  const { shopExploreTabs, shopHeroSlides } = useLocalizedSiteContent();
+  const { copy, language } = useTranslation();
   const [products, setProducts] = useState<ProductCardView[]>([]);
   const [collections, setCollections] = useState<CollectionCardView[]>([]);
   const [loadingProducts, setLoadingProducts] = useState(true);
@@ -17,8 +20,12 @@ export function ShopPage() {
 
   useEffect(() => {
     let isActive = true;
+    setLoadingProducts(true);
+    setLoadingCollections(true);
+    setProductsError(null);
+    setCollectionsError(null);
 
-    void fetchPublicShopProducts(12)
+    void fetchPublicShopProducts(12, language)
       .then((rows) => {
         if (!isActive) {
           return;
@@ -26,12 +33,12 @@ export function ShopPage() {
 
         setProducts(rows);
       })
-      .catch((caughtError) => {
+      .catch(() => {
         if (!isActive) {
           return;
         }
 
-        setProductsError(caughtError instanceof Error ? caughtError.message : "Unable to load new arrivals.");
+        setProductsError(copy.shop.arrivalsError);
       })
       .finally(() => {
         if (isActive) {
@@ -39,7 +46,7 @@ export function ShopPage() {
         }
       });
 
-    void fetchPublicCollections()
+    void fetchPublicCollections(language)
       .then((rows) => {
         if (!isActive) {
           return;
@@ -47,12 +54,12 @@ export function ShopPage() {
 
         setCollections(rows);
       })
-      .catch((caughtError) => {
+      .catch(() => {
         if (!isActive) {
           return;
         }
 
-        setCollectionsError(caughtError instanceof Error ? caughtError.message : "Unable to load collections.");
+        setCollectionsError(copy.shop.collectionsError);
       })
       .finally(() => {
         if (isActive) {
@@ -63,7 +70,7 @@ export function ShopPage() {
     return () => {
       isActive = false;
     };
-  }, []);
+  }, [copy.shop.arrivalsError, copy.shop.collectionsError, language]);
 
   const scrollArrivals = (direction: "prev" | "next") => {
     const viewport = arrivalsViewportRef.current;
@@ -90,10 +97,10 @@ export function ShopPage() {
         <div className="container">
           <div className="shop-arrivals__header">
             <h2 className="shop-arrivals__title">
-              New Arrivals. <span>REY backpacks &amp; bags</span>
+              {copy.shop.arrivalsTitle} <span>{copy.shop.arrivalsSuffix}</span>
             </h2>
             <div className="shop-arrivals__controls">
-              <button className="shop-arrivals__control" type="button" aria-label="Show previous arrivals" onClick={() => scrollArrivals("prev")}>
+              <button className="shop-arrivals__control" type="button" aria-label={copy.shop.previousArrivals} onClick={() => scrollArrivals("prev")}>
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path
                     fillRule="evenodd"
@@ -102,7 +109,7 @@ export function ShopPage() {
                   />
                 </svg>
               </button>
-              <button className="shop-arrivals__control" type="button" aria-label="Show next arrivals" onClick={() => scrollArrivals("next")}>
+              <button className="shop-arrivals__control" type="button" aria-label={copy.shop.nextArrivals} onClick={() => scrollArrivals("next")}>
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path
                     fillRule="evenodd"
@@ -115,9 +122,9 @@ export function ShopPage() {
           </div>
           <div className="shop-arrivals__viewport" ref={arrivalsViewportRef}>
             <div className="shop-arrivals__track">
-              {loadingProducts ? <p className="shop-state">Loading new arrivals...</p> : null}
+              {loadingProducts ? <p className="shop-state">{copy.shop.loadingArrivals}</p> : null}
               {productsError ? <p className="shop-state shop-state--error">{productsError}</p> : null}
-              {!loadingProducts && !productsError && products.length === 0 ? <p className="shop-state">No products available yet.</p> : null}
+              {!loadingProducts && !productsError && products.length === 0 ? <p className="shop-state">{copy.shop.emptyArrivals}</p> : null}
               {products.map((product) => (
                 <div className="shop-arrivals__slide" key={product.id}>
                   <ProductCard product={product} />
@@ -131,10 +138,10 @@ export function ShopPage() {
 
       <section id="explore" className="page-section">
         <div className="container">
-          {loadingCollections ? <p className="shop-state">Loading collections...</p> : null}
+          {loadingCollections ? <p className="shop-state">{copy.shop.loadingCollections}</p> : null}
           {collectionsError ? <p className="shop-state shop-state--error">{collectionsError}</p> : null}
           {!loadingCollections && !collectionsError ? (
-            <ExploreCollections title="Start exploring." tabs={shopExploreTabs} items={collections} />
+            <ExploreCollections title={copy.shop.exploreTitle} tabs={shopExploreTabs} items={collections} />
           ) : null}
         </div>
       </section>

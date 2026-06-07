@@ -1,4 +1,7 @@
+import { useTranslation } from "../i18n/language";
+
 export function AboutPage() {
+  const { copy } = useTranslation();
   const aboutGalleryImages = [
     "/_next/p1-176ca.jpg",
     "/_next/p2-1114e.jpg",
@@ -16,12 +19,8 @@ export function AboutPage() {
             <span className="about-hero__glow-ball about-hero__glow-ball--teal" />
           </div>
           <div className="about-hero__copy">
-            <h1 className="about-hero__title">👋 About Us.</h1>
-            <p className="about-hero__body">
-              We&apos;re impartial and independent, and every day we create distinctive, world-class
-              programmes and content which inform, educate and entertain millions of people in the
-              around the world.
-            </p>
+            <h1 className="about-hero__title">{copy.about.title}</h1>
+            <p className="about-hero__body">{copy.about.body}</p>
           </div>
           <div className="about-hero__media">
             <div className="about-hero__gallery" aria-hidden="true">

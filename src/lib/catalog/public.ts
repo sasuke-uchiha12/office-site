@@ -1,4 +1,6 @@
 import { shopCollections, shopProducts } from "../../data/siteContent";
+import { getLocalizedSiteContent } from "../../i18n/content";
+import type { Language } from "../../i18n/language";
 import { slugify } from "../../utils/slugify";
 import { hasSupabaseConfig, requireSupabaseClient, supabase } from "../supabase/client";
 import type {
@@ -41,42 +43,64 @@ function publicUrlFromPath(bucket: string, path: string | null | undefined, fall
   return supabase.storage.from(bucket).getPublicUrl(path).data.publicUrl;
 }
 
-function toProductCardView(product: ProductRow): ProductCardView {
+function localizedValue(language: Language, translated: string | null | undefined, fallback: string): string {
+  if (language !== "de") {
+    return fallback;
+  }
+
+  const trimmed = translated?.trim();
+  return trimmed ? trimmed : fallback;
+}
+
+function productCountLabel(count: number, language: Language): string {
+  return language === "de" ? `${count} Produkte` : `${count} products`;
+}
+
+function toProductCardView(product: ProductRow, language: Language): ProductCardView {
+  const title = localizedValue(language, product.title_de, product.title);
+  const subtitle = localizedValue(language, product.subtitle_de, product.subtitle);
+  const imageAlt = localizedValue(language, product.image_alt_de, product.image_alt || `${title} product image`);
+
   return {
     id: product.id,
-    title: product.title,
-    subtitle: product.subtitle,
+    title,
+    subtitle,
     slug: product.slug,
     image: publicUrlFromPath(PRODUCT_IMAGES_BUCKET, product.image_path, "/_next/p1-176ca.jpg"),
-    imageAlt: product.image_alt || `${product.title} product image`,
+    imageAlt,
     isNew: product.is_new,
     price: "",
     liked: false,
   };
 }
 
-function toCollectionCardView(collection: CollectionRow, productCount: number): CollectionCardView {
+function toCollectionCardView(collection: CollectionRow, productCount: number, language: Language): CollectionCardView {
   const derivedCount = collection.product_count_override ?? productCount;
+  const title = localizedValue(language, collection.title_de, collection.title);
+  const eyebrow = localizedValue(language, collection.eyebrow_de, collection.eyebrow);
+  const iconImageAlt = localizedValue(language, collection.icon_image_alt_de, collection.icon_image_alt || `${title} category icon`);
 
   return {
     id: collection.id,
     slug: collection.slug,
     category: collection.category,
-    eyebrow: collection.eyebrow,
-    title: collection.title,
-    productCount: `${derivedCount} products`,
+    eyebrow,
+    title,
+    productCount: productCountLabel(derivedCount, language),
     iconImage: publicUrlFromPath(COLLECTION_IMAGES_BUCKET, collection.icon_image_path, "/_next/p1-176ca.jpg"),
-    iconImageAlt: collection.icon_image_alt || `${collection.title} category icon`,
+    iconImageAlt,
     backgroundSvg: collection.background_svg,
   };
 }
 
-function fallbackProducts(): ProductCardView[] {
-  return shopProducts.map((product) => ({
+function fallbackProducts(language: Language): ProductCardView[] {
+  const localizedProducts = getLocalizedSiteContent(language).shopProducts;
+
+  return localizedProducts.map((product, index) => ({
     id: product.id,
     title: product.title,
     subtitle: product.subtitle,
-    slug: slugify(product.title),
+    slug: slugify(shopProducts[index]?.title ?? product.title),
     image: product.image,
     imageAlt: product.imageAlt,
     isNew: product.isNew,
@@ -85,10 +109,12 @@ function fallbackProducts(): ProductCardView[] {
   }));
 }
 
-function fallbackCollections(): CollectionCardView[] {
-  return shopCollections.map((collection) => ({
+function fallbackCollections(language: Language): CollectionCardView[] {
+  const localizedCollections = getLocalizedSiteContent(language).shopCollections;
+
+  return localizedCollections.map((collection, index) => ({
     id: collection.id,
-    slug: slugify(collection.title),
+    slug: slugify(shopCollections[index]?.title ?? collection.title),
     category: collection.category,
     eyebrow: collection.eyebrow,
     title: collection.title,
@@ -99,10 +125,10 @@ function fallbackCollections(): CollectionCardView[] {
   }));
 }
 
-function fallbackProductsForCollection(slug: string): ProductCardView[] {
-  const collections = fallbackCollections();
+function fallbackProductsForCollection(slug: string, language: Language): ProductCardView[] {
+  const collections = fallbackCollections(language);
   const collection = collections.find((item) => item.slug === slug);
-  const products = fallbackProducts();
+  const products = fallbackProducts(language);
 
   if (!collection) {
     return [];
@@ -116,15 +142,15 @@ function fallbackProductsForCollection(slug: string): ProductCardView[] {
   return orderedProducts.length > 0 ? orderedProducts : products.slice(0, 4);
 }
 
-export async function fetchPublicShopProducts(limit = 12): Promise<ProductCardView[]> {
+export async function fetchPublicShopProducts(limit = 12, language: Language = "en"): Promise<ProductCardView[]> {
   if (!hasSupabaseConfig) {
-    return fallbackProducts().slice(0, limit);
+    return fallbackProducts(language).slice(0, limit);
   }
 
   const client = requireSupabaseClient();
   const { data, error } = await client
     .from("products")
-    .select("id,title,subtitle,slug,image_path,image_alt,is_new,published,created_at,updated_at")
+    .select("id,title,title_de,subtitle,subtitle_de,slug,image_path,image_alt,image_alt_de,is_new,published,created_at,updated_at")
     .eq("published", true)
     .order("created_at", { ascending: false })
     .limit(limit);
@@ -133,12 +159,12 @@ export async function fetchPublicShopProducts(limit = 12): Promise<ProductCardVi
     throw error;
   }
 
-  return (data ?? []).map((row) => toProductCardView(row as ProductRow));
+  return (data ?? []).map((row) => toProductCardView(row as ProductRow, language));
 }
 
-export async function fetchPublicCollections(): Promise<CollectionCardView[]> {
+export async function fetchPublicCollections(language: Language = "en"): Promise<CollectionCardView[]> {
   if (!hasSupabaseConfig) {
-    return fallbackCollections();
+    return fallbackCollections(language);
   }
 
   const client = requireSupabaseClient();
@@ -146,7 +172,7 @@ export async function fetchPublicCollections(): Promise<CollectionCardView[]> {
     await Promise.all([
       client
         .from("collections")
-        .select("id,title,slug,category,eyebrow,product_count_override,icon_image_path,icon_image_alt,background_svg,published,created_at,updated_at")
+        .select("id,title,title_de,slug,category,eyebrow,eyebrow_de,product_count_override,icon_image_path,icon_image_alt,icon_image_alt_de,background_svg,published,created_at,updated_at")
         .eq("published", true)
         .order("title", { ascending: true }),
       client.from("collection_products").select("collection_id,product_id,position"),
@@ -177,19 +203,19 @@ export async function fetchPublicCollections(): Promise<CollectionCardView[]> {
   }
 
   return ((collectionsData ?? []) as CollectionRow[]).map((collection) =>
-    toCollectionCardView(collection, counts.get(collection.id) ?? 0),
+    toCollectionCardView(collection, counts.get(collection.id) ?? 0, language),
   );
 }
 
-export async function fetchPublicCollectionBySlug(slug: string): Promise<CollectionCardView | null> {
+export async function fetchPublicCollectionBySlug(slug: string, language: Language = "en"): Promise<CollectionCardView | null> {
   if (!hasSupabaseConfig) {
-    return fallbackCollections().find((collection) => collection.slug === slug) ?? null;
+    return fallbackCollections(language).find((collection) => collection.slug === slug) ?? null;
   }
 
   const client = requireSupabaseClient();
   const { data, error } = await client
     .from("collections")
-    .select("id,title,slug,category,eyebrow,product_count_override,icon_image_path,icon_image_alt,background_svg,published,created_at,updated_at")
+    .select("id,title,title_de,slug,category,eyebrow,eyebrow_de,product_count_override,icon_image_path,icon_image_alt,icon_image_alt_de,background_svg,published,created_at,updated_at")
     .eq("slug", slug)
     .eq("published", true)
     .maybeSingle();
@@ -223,12 +249,12 @@ export async function fetchPublicCollectionBySlug(slug: string): Promise<Collect
   const publishedIds = new Set((publishedProducts ?? []).map((row) => String((row as { id: string }).id)));
   const count = ((joinRows ?? []) as CollectionProductRow[]).filter((row) => publishedIds.has(row.product_id)).length;
 
-  return toCollectionCardView(data as CollectionRow, count);
+  return toCollectionCardView(data as CollectionRow, count, language);
 }
 
-export async function fetchPublicProductsForCollection(slug: string): Promise<ProductCardView[]> {
+export async function fetchPublicProductsForCollection(slug: string, language: Language = "en"): Promise<ProductCardView[]> {
   if (!hasSupabaseConfig) {
-    return fallbackProductsForCollection(slug);
+    return fallbackProductsForCollection(slug, language);
   }
 
   const client = requireSupabaseClient();
@@ -265,7 +291,7 @@ export async function fetchPublicProductsForCollection(slug: string): Promise<Pr
 
   const { data: products, error: productsError } = await client
     .from("products")
-    .select("id,title,subtitle,slug,image_path,image_alt,is_new,published,created_at,updated_at")
+    .select("id,title,title_de,subtitle,subtitle_de,slug,image_path,image_alt,image_alt_de,is_new,published,created_at,updated_at")
     .in("id", productIds)
     .eq("published", true);
 
@@ -273,7 +299,7 @@ export async function fetchPublicProductsForCollection(slug: string): Promise<Pr
     throw productsError;
   }
 
-  const productsById = new Map(((products ?? []) as ProductRow[]).map((product) => [product.id, toProductCardView(product)]));
+  const productsById = new Map(((products ?? []) as ProductRow[]).map((product) => [product.id, toProductCardView(product, language)]));
 
   return productIds
     .map((id) => productsById.get(id))
@@ -281,7 +307,7 @@ export async function fetchPublicProductsForCollection(slug: string): Promise<Pr
 }
 
 export function getFallbackCollectionFormDefaults() {
-  return fallbackCollections().map((collection) => ({
+  return fallbackCollections("en").map((collection) => ({
     ...collection,
     productCountOverride: parseProductCount(collection.productCount),
   }));

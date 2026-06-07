@@ -12,9 +12,12 @@ import { slugify } from "../../utils/slugify";
 
 const EMPTY_PRODUCT_FORM: CatalogProductForm = {
   title: "",
+  titleDe: "",
   subtitle: "",
+  subtitleDe: "",
   slug: "",
   imageAlt: "",
+  imageAltDe: "",
   imagePath: null,
   isNew: false,
 };
@@ -100,9 +103,12 @@ export function AdminProductsPage() {
     setForm({
       id: product.id,
       title: product.title,
+      titleDe: product.title_de ?? "",
       subtitle: product.subtitle,
+      subtitleDe: product.subtitle_de ?? "",
       slug: product.slug,
       imageAlt: product.image_alt ?? "",
+      imageAltDe: product.image_alt_de ?? "",
       imagePath: product.image_path,
       isNew: product.is_new,
     });
@@ -131,9 +137,12 @@ export function AdminProductsPage() {
         await upsertAdminProduct({
           id: savedProduct.id,
           title: savedProduct.title,
+          titleDe: form.titleDe,
           subtitle: savedProduct.subtitle,
+          subtitleDe: form.subtitleDe,
           slug: savedProduct.slug,
           imageAlt: form.imageAlt,
+          imageAltDe: form.imageAltDe,
           imagePath: nextImagePath,
           isNew: savedProduct.is_new,
         });
@@ -144,9 +153,12 @@ export function AdminProductsPage() {
       setForm({
         id: savedProduct.id,
         title: savedProduct.title,
+        titleDe: savedProduct.title_de ?? form.titleDe,
         subtitle: savedProduct.subtitle,
+        subtitleDe: savedProduct.subtitle_de ?? form.subtitleDe,
         slug: savedProduct.slug,
         imageAlt: form.imageAlt,
+        imageAltDe: savedProduct.image_alt_de ?? form.imageAltDe,
         imagePath: nextImagePath,
         isNew: savedProduct.is_new,
       });
@@ -233,6 +245,17 @@ export function AdminProductsPage() {
 
           <div className="admin-form__row">
             <label className="admin-field">
+              <span>German title</span>
+              <input type="text" value={form.titleDe} onChange={(event) => setForm((current) => ({ ...current, titleDe: event.target.value }))} />
+            </label>
+            <label className="admin-field">
+              <span>German subtitle</span>
+              <input type="text" value={form.subtitleDe} onChange={(event) => setForm((current) => ({ ...current, subtitleDe: event.target.value }))} />
+            </label>
+          </div>
+
+          <div className="admin-form__row">
+            <label className="admin-field">
               <span>Slug</span>
               <input type="text" value={form.slug} onChange={(event) => setForm((current) => ({ ...current, slug: slugify(event.target.value) }))} required />
             </label>
@@ -241,6 +264,11 @@ export function AdminProductsPage() {
               <input type="text" value={form.imageAlt} onChange={(event) => setForm((current) => ({ ...current, imageAlt: event.target.value }))} required />
             </label>
           </div>
+
+          <label className="admin-field">
+            <span>German image alt</span>
+            <input type="text" value={form.imageAltDe} onChange={(event) => setForm((current) => ({ ...current, imageAltDe: event.target.value }))} />
+          </label>
 
           <label className="admin-checkbox">
             <input type="checkbox" checked={form.isNew} onChange={(event) => setForm((current) => ({ ...current, isNew: event.target.checked }))} />

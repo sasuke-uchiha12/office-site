@@ -17,11 +17,14 @@ const CATEGORY_OPTIONS: CatalogCategory[] = ["accessories", "footwear", "jewelry
 
 const EMPTY_COLLECTION_FORM: CatalogCollectionForm = {
   title: "",
+  titleDe: "",
   slug: "",
   category: "accessories",
   eyebrow: "",
+  eyebrowDe: "",
   productCountOverride: "",
   iconImageAlt: "",
+  iconImageAltDe: "",
   iconImagePath: null,
   backgroundSvg: "/_next/static/media/explore1.bf5d4097.svg",
 };
@@ -121,11 +124,14 @@ export function AdminCollectionsPage() {
     setForm({
       id: collection.id,
       title: collection.title,
+      titleDe: collection.title_de ?? "",
       slug: collection.slug,
       category: collection.category,
       eyebrow: collection.eyebrow,
+      eyebrowDe: collection.eyebrow_de ?? "",
       productCountOverride: collection.product_count_override?.toString() ?? "",
       iconImageAlt: collection.icon_image_alt ?? "",
+      iconImageAltDe: collection.icon_image_alt_de ?? "",
       iconImagePath: collection.icon_image_path,
       backgroundSvg: collection.background_svg,
     });
@@ -161,11 +167,14 @@ export function AdminCollectionsPage() {
         await upsertAdminCollection({
           id: savedCollection.id,
           title: savedCollection.title,
+          titleDe: form.titleDe,
           slug: savedCollection.slug,
           category: savedCollection.category,
           eyebrow: savedCollection.eyebrow,
+          eyebrowDe: form.eyebrowDe,
           productCountOverride: savedCollection.product_count_override?.toString() ?? "",
           iconImageAlt: form.iconImageAlt,
+          iconImageAltDe: form.iconImageAltDe,
           iconImagePath: nextIconPath,
           backgroundSvg: savedCollection.background_svg,
         });
@@ -177,11 +186,14 @@ export function AdminCollectionsPage() {
       setForm({
         id: savedCollection.id,
         title: savedCollection.title,
+        titleDe: savedCollection.title_de ?? form.titleDe,
         slug: savedCollection.slug,
         category: savedCollection.category,
         eyebrow: savedCollection.eyebrow,
+        eyebrowDe: savedCollection.eyebrow_de ?? form.eyebrowDe,
         productCountOverride: savedCollection.product_count_override?.toString() ?? "",
         iconImageAlt: form.iconImageAlt,
+        iconImageAltDe: savedCollection.icon_image_alt_de ?? form.iconImageAltDe,
         iconImagePath: nextIconPath,
         backgroundSvg: savedCollection.background_svg,
       });
@@ -268,6 +280,17 @@ export function AdminCollectionsPage() {
 
           <div className="admin-form__row">
             <label className="admin-field">
+              <span>German title</span>
+              <input type="text" value={form.titleDe} onChange={(event) => setForm((current) => ({ ...current, titleDe: event.target.value }))} />
+            </label>
+            <label className="admin-field">
+              <span>German eyebrow</span>
+              <input type="text" value={form.eyebrowDe} onChange={(event) => setForm((current) => ({ ...current, eyebrowDe: event.target.value }))} />
+            </label>
+          </div>
+
+          <div className="admin-form__row">
+            <label className="admin-field">
               <span>Category</span>
               <select value={form.category} onChange={(event) => setForm((current) => ({ ...current, category: event.target.value as CatalogCategory }))}>
                 {CATEGORY_OPTIONS.map((option) => (
@@ -305,6 +328,11 @@ export function AdminCollectionsPage() {
               <small>Only AVIF uploads are accepted.</small>
             </label>
           </div>
+
+          <label className="admin-field">
+            <span>German icon image alt</span>
+            <input type="text" value={form.iconImageAltDe} onChange={(event) => setForm((current) => ({ ...current, iconImageAltDe: event.target.value }))} />
+          </label>
 
           {previewUrl ? (
             <div className="admin-image-preview admin-image-preview--icon">

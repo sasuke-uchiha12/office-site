@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { FloatingAvatar, TestimonialItem } from "../data/siteContent";
+import { useTranslation } from "../i18n/language";
 
 type TestimonialSpotlightProps = {
   title: string;
@@ -15,6 +16,7 @@ export function TestimonialSpotlight({
   floatingAvatars,
 }: TestimonialSpotlightProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { copy } = useTranslation();
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -71,7 +73,7 @@ export function TestimonialSpotlight({
           <p className="testimonial-spotlight__author">{active.author}</p>
 
           <div className="testimonial-spotlight__meta">
-            <div className="testimonial-spotlight__stars" aria-label="5 star rating">
+            <div className="testimonial-spotlight__stars" aria-label={copy.common.ratingLabel}>
               <span>★</span>
               <span>★</span>
               <span>★</span>
@@ -79,14 +81,14 @@ export function TestimonialSpotlight({
               <span>★</span>
             </div>
 
-            <div className="testimonial-spotlight__dots" aria-label="testimonial carousel">
+            <div className="testimonial-spotlight__dots" aria-label={copy.common.testimonialCarousel}>
               {testimonials.map((item, index) => (
                 <button
                   key={item.id}
                   type="button"
                   className={`testimonial-spotlight__dot${index === activeIndex ? " is-active" : ""}`}
                   onClick={() => setActiveIndex(index)}
-                  aria-label={`Show testimonial ${index + 1}`}
+                  aria-label={`${copy.common.showTestimonial} ${index + 1}`}
                 />
               ))}
             </div>

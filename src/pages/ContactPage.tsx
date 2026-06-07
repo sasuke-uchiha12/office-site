@@ -1,4 +1,5 @@
-import { contactMethods } from "../data/siteContent";
+import { useLocalizedSiteContent } from "../i18n/content";
+import { useTranslation } from "../i18n/language";
 
 function FacebookIcon() {
   return (
@@ -51,31 +52,33 @@ const socialLinks = [
   { id: "social-telegram", label: "Telegram", href: "#", icon: <TelegramIcon /> },
 ];
 
-const contactBlocks = [
-  {
-    id: "address",
-    heading: "🗺 ADDRESS",
-    value: "Photo booth tattooed prism, portland taiyaki hoodie neutra typewriter",
-  },
-  {
-    id: "email",
-    heading: "💌 EMAIL",
-    value: contactMethods[0]?.value ?? "hello@hema-office.example",
-  },
-  {
-    id: "phone",
-    heading: "☎ PHONE",
-    value: contactMethods[1]?.value ?? "+44 (0)20 5555 0148",
-  },
-];
-
 export function ContactPage() {
+  const { contactMethods } = useLocalizedSiteContent();
+  const { copy } = useTranslation();
+  const contactBlocks = [
+    {
+      id: "address",
+      heading: copy.contact.addressHeading,
+      value: copy.contact.addressValue,
+    },
+    {
+      id: "email",
+      heading: copy.contact.emailHeading,
+      value: contactMethods[0]?.value ?? "piratenschatzkammer1@gmail.com",
+    },
+    {
+      id: "phone",
+      heading: copy.contact.phoneHeading,
+      value: contactMethods[1]?.value ?? "+44 (0)20 5555 0148",
+    },
+  ];
+
   return (
     <section className="page-section contact-page">
       <div className="container contact-page__container">
         <div className="contact-page__layout">
           <div className="contact-page__primary">
-            <h1 className="contact-page__title">Contact</h1>
+            <h1 className="contact-page__title">{copy.contact.title}</h1>
 
             <div className="contact-page__stack">
               {contactBlocks.map((block) => (
@@ -86,8 +89,8 @@ export function ContactPage() {
               ))}
 
               <div className="contact-page__block">
-                <p className="contact-page__label">🌏 SOCIALS</p>
-                <nav className="contact-page__socials" aria-label="Social links">
+                <p className="contact-page__label">{copy.contact.socialsHeading}</p>
+                <nav className="contact-page__socials" aria-label={copy.contact.socialsLabel}>
                   {socialLinks.map((social) => (
                     <a
                       key={social.id}
