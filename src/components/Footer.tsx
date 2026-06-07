@@ -14,6 +14,7 @@ export function Footer() {
   const { navigation } = useLocalizedSiteContent();
   const { copy } = useTranslation();
   const navLabel = (to: string) => navigation.find((item) => item.to === to)?.label ?? to;
+  const serviceJourneyLabel = "serviceJourney" in copy.footer ? copy.footer.serviceJourney : null;
   const footerColumns = [
     {
       title: copy.footer.gettingStarted,
@@ -36,7 +37,7 @@ export function Footer() {
       links: [
         { label: copy.footer.pageFlow, to: "/about" },
         { label: copy.footer.visualSystem, to: "/shop" },
-        { label: copy.footer.serviceJourney, to: "/house-clearance" },
+        ...(serviceJourneyLabel ? [{ label: serviceJourneyLabel, to: "/house-clearance" }] : []),
       ],
     },
   ];
