@@ -20,6 +20,17 @@ async function ensureAvifFile(file: File) {
   }
 }
 
+function nullableTrim(value: string): string | null {
+  const trimmed = value.trim();
+  return trimmed ? trimmed : null;
+}
+
+const PRODUCT_SELECT =
+  "id,title,title_de,subtitle,subtitle_de,slug,image_path,image_alt,image_alt_de,is_new,published,created_at,updated_at";
+
+const COLLECTION_SELECT =
+  "id,title,title_de,slug,category,eyebrow,eyebrow_de,product_count_override,icon_image_path,icon_image_alt,icon_image_alt_de,background_svg,published,created_at,updated_at";
+
 export async function getAdminSession(): Promise<Session | null> {
   const client = requireSupabaseClient();
   const { data, error } = await client.auth.getSession();
@@ -64,7 +75,7 @@ export async function listAdminProducts(): Promise<ProductRow[]> {
   const client = requireSupabaseClient();
   const { data, error } = await client
     .from("products")
-    .select("id,title,subtitle,slug,image_path,image_alt,is_new,published,created_at,updated_at")
+    .select(PRODUCT_SELECT)
     .order("updated_at", { ascending: false });
 
   if (error) {
@@ -78,10 +89,13 @@ export async function upsertAdminProduct(product: CatalogProductForm): Promise<P
   const client = requireSupabaseClient();
   const payload = {
     title: product.title.trim(),
+    title_de: nullableTrim(product.titleDe),
     subtitle: product.subtitle.trim(),
+    subtitle_de: nullableTrim(product.subtitleDe),
     slug: product.slug.trim(),
     image_path: product.imagePath ?? null,
     image_alt: product.imageAlt.trim(),
+    image_alt_de: nullableTrim(product.imageAltDe),
     is_new: product.isNew,
     published: true,
   };
@@ -91,12 +105,12 @@ export async function upsertAdminProduct(product: CatalogProductForm): Promise<P
         .from("products")
         .update(payload)
         .eq("id", product.id)
-        .select("id,title,subtitle,slug,image_path,image_alt,is_new,published,created_at,updated_at")
+        .select(PRODUCT_SELECT)
         .single()
     : client
         .from("products")
         .insert(payload)
-        .select("id,title,subtitle,slug,image_path,image_alt,is_new,published,created_at,updated_at")
+        .select(PRODUCT_SELECT)
         .single();
 
   const { data, error } = await query;
@@ -138,7 +152,7 @@ export async function listAdminCollections(): Promise<CollectionRow[]> {
   const client = requireSupabaseClient();
   const { data, error } = await client
     .from("collections")
-    .select("id,title,slug,category,eyebrow,product_count_override,icon_image_path,icon_image_alt,background_svg,published,created_at,updated_at")
+    .select(COLLECTION_SELECT)
     .order("updated_at", { ascending: false });
 
   if (error) {
@@ -167,12 +181,15 @@ export async function upsertAdminCollection(collection: CatalogCollectionForm): 
   const parsedCount = Number.parseInt(collection.productCountOverride, 10);
   const payload = {
     title: collection.title.trim(),
+    title_de: nullableTrim(collection.titleDe),
     slug: collection.slug.trim(),
     category: collection.category,
     eyebrow: collection.eyebrow.trim(),
+    eyebrow_de: nullableTrim(collection.eyebrowDe),
     product_count_override: Number.isNaN(parsedCount) ? null : parsedCount,
     icon_image_path: collection.iconImagePath ?? null,
     icon_image_alt: collection.iconImageAlt.trim(),
+    icon_image_alt_de: nullableTrim(collection.iconImageAltDe),
     background_svg: collection.backgroundSvg.trim(),
     published: true,
   };
@@ -182,12 +199,12 @@ export async function upsertAdminCollection(collection: CatalogCollectionForm): 
         .from("collections")
         .update(payload)
         .eq("id", collection.id)
-        .select("id,title,slug,category,eyebrow,product_count_override,icon_image_path,icon_image_alt,background_svg,published,created_at,updated_at")
+        .select(COLLECTION_SELECT)
         .single()
     : client
         .from("collections")
         .insert(payload)
-        .select("id,title,slug,category,eyebrow,product_count_override,icon_image_path,icon_image_alt,background_svg,published,created_at,updated_at")
+        .select(COLLECTION_SELECT)
         .single();
 
   const { data, error } = await query;

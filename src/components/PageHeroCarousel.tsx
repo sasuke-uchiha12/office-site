@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { HeroSlide } from "../data/siteContent";
+import { useTranslation } from "../i18n/language";
 
 type PageHeroCarouselProps = {
   slides: HeroSlide[];
@@ -8,6 +9,7 @@ type PageHeroCarouselProps = {
 
 export function PageHeroCarousel({ slides }: PageHeroCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { copy } = useTranslation();
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -33,12 +35,12 @@ export function PageHeroCarousel({ slides }: PageHeroCarouselProps) {
     <section className="page-section page-section--tight">
       <div className="container">
         <div className={`hero-card ${toneClass}`}>
-          <button type="button" className="carousel-control carousel-control--edge carousel-control--left" onClick={showPrevious} aria-label="Previous slide">
+          <button type="button" className="carousel-control carousel-control--edge carousel-control--left" onClick={showPrevious} aria-label={copy.common.previousSlide}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <path d="M15 18L9 12L15 6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
-          <button type="button" className="carousel-control carousel-control--edge carousel-control--right" onClick={showNext} aria-label="Next slide">
+          <button type="button" className="carousel-control carousel-control--edge carousel-control--right" onClick={showNext} aria-label={copy.common.nextSlide}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <path d="M9 18L15 12L9 6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

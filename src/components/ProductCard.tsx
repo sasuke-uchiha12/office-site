@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "../i18n/language";
 import type { ProductCardView } from "../lib/catalog/types";
 
 type ProductCardProps = {
@@ -7,16 +8,17 @@ type ProductCardProps = {
 
 export function ProductCard({ product }: ProductCardProps) {
   const [liked, setLiked] = useState(Boolean(product.liked));
+  const { copy } = useTranslation();
 
   return (
     <article className="product-card-app">
       <div className="product-card-app__media-wrap">
         <div className="product-card-app__media">
-          {product.isNew ? <span className="product-card-app__badge">New in</span> : null}
+          {product.isNew ? <span className="product-card-app__badge">{copy.product.newIn}</span> : null}
           <button
             className={`product-card-app__wish${liked ? " is-active" : ""}`}
             type="button"
-            aria-label={liked ? "Remove saved item" : "Save item"}
+            aria-label={liked ? copy.product.remove : copy.product.save}
             aria-pressed={liked}
             onClick={() => setLiked((value) => !value)}
           >
