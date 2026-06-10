@@ -432,7 +432,7 @@ export const shopHeroSlides: HeroSlide[] = [
     title: "Browse selected clearance finds that are still made to be used.",
     copy:
       "Every item in our shop is chosen for its condition, usefulness, and value. Browse furniture, home accessories, and practical goods before they move to their next home.",
-    image: "/_next/qlecbb.avif",
+    image: "/_next/shop-carousel-2-transparent.png",
     imageAlt: "Curated collection artwork",
     primaryCta: { label: "Contact Us", to: "/shop#new-arrivals" },
     secondaryCta: { label: "Start exploring", to: "/house-clearance" },
