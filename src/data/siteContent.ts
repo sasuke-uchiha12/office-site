@@ -142,7 +142,7 @@ export const homeHeroSlides: HeroSlide[] = [
     title: "We clear, sort, remove, and leave it ready",
     copy:
       "From the first inspection to the final handover, we manage every detail so your property is cleared without unnecessary stress.",
-    image: "/_next/hero-right-1eb17.png",
+    image: "/_next/hero-right-1-transparent.png",
     imageAlt: "Editorial hero collage for house clearance",
     primaryCta: { label: "Contact Us", to: "/house-clearance" },
     secondaryCta: { label: "Our Process", to: "/shop" },
@@ -154,7 +154,7 @@ export const homeHeroSlides: HeroSlide[] = [
     title: "Useful pieces, fair prices, easy shopping.",
     copy:
       "Browse available items from clearances and collections, all listed clearly with details and pricing. A simple way to find affordable products for your home.",
-    image: "/_next/hero-right-2c7e8.png",
+    image: "/_next/hero-right-2-transparent.png",
     imageAlt: "Editorial hero collage for shop experience",
     primaryCta: { label: "Contact Us", to: "/shop" },
     secondaryCta: { label: "Browse products", to: "/about" },
@@ -169,7 +169,7 @@ export const homeEntryOptions: EntryOption[] = [
     title: "House Clearance",
     copy:
       "Clear your property with a simple, organised service from sorting to removal. We handle furniture, household items, and unwanted goods carefully and leave the space ready for handover.",
-    image: "/_next/booth186c3.png",
+    image: "/_next/house-clearance-entry-transparent.png",
     imageAlt: "House clearance entry artwork",
     to: "/house-clearance",
   },
@@ -179,7 +179,7 @@ export const homeEntryOptions: EntryOption[] = [
     title: "Shop",
     copy:
       "Browse selected second-hand furniture, home items, and useful pieces available at fair prices. Find quality products ready for a new home while giving reusable items a second life.",
-    image: "/_next/promo1c027.png",
+    image: "/_next/shop-entry-transparent.png",
     imageAlt: "Shop entry artwork",
     to: "/shop",
   },
@@ -432,7 +432,7 @@ export const shopHeroSlides: HeroSlide[] = [
     title: "Browse selected clearance finds that are still made to be used.",
     copy:
       "Every item in our shop is chosen for its condition, usefulness, and value. Browse furniture, home accessories, and practical goods before they move to their next home.",
-    image: "/_next/qlecbb.png",
+    image: "/_next/qlecbb.avif",
     imageAlt: "Curated collection artwork",
     primaryCta: { label: "Contact Us", to: "/shop#new-arrivals" },
     secondaryCta: { label: "Start exploring", to: "/house-clearance" },
