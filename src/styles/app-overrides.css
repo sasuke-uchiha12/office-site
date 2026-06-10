@@ -272,6 +272,27 @@ select {
   object-position: center bottom;
 }
 
+.hero-card__media img[src*="hero-right-35b29"],
+.hero-card__media img[src*="promo2f621"] {
+  width: min(100%, 38rem);
+  max-height: 25rem;
+  border-radius: 1.5rem;
+  object-position: center;
+  box-shadow: 0 22px 44px rgba(15, 23, 42, 0.14);
+}
+
+.hero-card__media img[src*="promo2f621"] {
+  width: min(88%, 28rem);
+  height: 25rem;
+  object-fit: cover;
+  object-position: 50% 48%;
+  transform: translateY(-3rem);
+}
+
+.hero-card__media img[src*="hero-right-35b29"] {
+  transform: translateY(-7.2rem);
+}
+
 .hero-card__accent {
   position: absolute;
   inset: auto auto -18% -8%;
